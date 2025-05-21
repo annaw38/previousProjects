@@ -1,4 +1,4 @@
-# Projects from Computer Science 300: Programming III
+# Projects from Computer Science 300: Programming II
 
 ## Vending Machine 
 ## Walking Sim
