@@ -1,6 +1,6 @@
-//////////////// FILE HEADER (INCLUDE IN EVERY FILE) //////////////////////////
+////////////////////////////////////////////////////////////////////////////
 //
-// Title: Vending Machine Tester
+// Title: Vending Machine
 // Course: CS 300 Fall 2022
 //
 // Author: Tanvi Wadhawan
@@ -11,7 +11,7 @@
 //
 // Partner Name: Anna Wang
 // Partner Email: awang382@wisc.edu
-// Partner Lecturer's Name: Hobbes
+// Partner Lecturer's Name: Hobbes Legault
 //
 // VERIFY THE FOLLOWING BY PLACING AN X NEXT TO EACH TRUE STATEMENT:
 // _x__ Write-up states that pair programming is allowed for this assignment.
@@ -20,15 +20,14 @@
 //
 ///////////////////////// ALWAYS CREDIT OUTSIDE HELP //////////////////////////
 //
-// Persons: (identify each by name and describe how they helped)NONE
-// Online Sources: (identify each by URL and describe how it helped)NONE
+// Persons: NONE
+// Online Sources: NONE
 //
 ///////////////////////////////////////////////////////////////////////////////
-// Below is a javadoc class header to complete
 /**
  * Class Vending Machine runs with many methods
  * 
- * @author Tanvi Wadhawan
+ * @author Tanvi Wadhawan, Anna Wang
  *
  */
 public class VendingMachine {
@@ -58,7 +57,6 @@ public class VendingMachine {
       items[itemsCount] = items1;
       itemsCount++;
     }
-    // TODO Implement this method.
     // Note that we suppose that the expirationDate is valid, meaning it is correctly
     // parsable to a positive integer
     return itemsCount; // default return statement added to avoid compiler errors. Feel free to
@@ -90,7 +88,6 @@ public class VendingMachine {
       String ans = s1 + " (" + s2 + ")";
       return ans;
     }
-    // default return statement added to avoid compiler errors. Feel free to change it.
   }
 
   /**
@@ -106,10 +103,9 @@ public class VendingMachine {
    *         smallest expiration date. If no match found, return -1.
    */
   public static int getIndexNextItem(String description, String[][] items, int itemsCount) {
-    // TODO Implement this method.
     int expDate =-1;
     int minExpDate=Integer.MAX_VALUE;
-    if(itemsCount<=0) {
+    if(itemsCount <= 0) {
       return -1;
     }
     
@@ -122,8 +118,7 @@ public class VendingMachine {
 
     // If the vending machine contains more than one item with the given description,
     // return the index of the one with the smallest expiration date.
-    return expDate; // default return statement added to avoid compiler errors. Feel 
-    //free to change it.
+    return expDate; 
   }
 
   /**
@@ -140,7 +135,6 @@ public class VendingMachine {
    *         itemsCount without making any change to the contents of the vending machine.
    */
   public static int removeNextItem(String description, String[][] items, int itemsCount) {
-    // TODO Implement this method.
     int smallestExp= getIndexNextItem(description, items, itemsCount);
     
     if(smallestExp >= 0) {
@@ -153,9 +147,7 @@ public class VendingMachine {
       }
       itemsCount--;
     }
-
-    return itemsCount; //default return statement added to avoid compiler
-                                          // errors. Feel free to change it.
+    return itemsCount; 
   }
 
   /**
@@ -171,15 +163,13 @@ public class VendingMachine {
    *         machine
    */
   public static int getItemOccurrences(String description, String[][] items, int itemsCount) {
-    // TODO Implement this method.
     int count = 0;
     for (int i = 0; i < itemsCount; i++) {
       if (items[i][0].equals(description)) {
         count++;
       }
     }
-    return count; // default return statement added to avoid compiler errors. Feel free to change
-                  // it.
+    return count; 
   }
 
   /**
@@ -194,14 +184,12 @@ public class VendingMachine {
    * @return true if there is a match with description in the vending machine, false otherwise
    */
   public static boolean containsItem(String description, String[][] items, int itemsCount) {
-    // TODO Implement this method.
     for (int i = 0; i < items.length; i++) {
       if (items[i][0].equals(description)) {
         return true;
       }
     }
-    return false; // default return statement added to avoid compiler errors. Feel free to change
-                  // it.
+    return false; 
   }
 
   /**
@@ -230,9 +218,7 @@ public class VendingMachine {
       }
 
     }
-
-    return count; // default return statement added to avoid compiler errors. Feel free to change
-                  // it.
+    return count;
   }
 
   /**
@@ -250,7 +236,6 @@ public class VendingMachine {
    * @return a descriptive summary of the contents of a vending machine
    */
   public static String getItemsSummary(String[][] items, int itemsCount) {
-    // TODO Implement this method.
     String ans="";
     String temp="";
     for (int i = 0; i < itemsCount; i++)
@@ -258,9 +243,6 @@ public class VendingMachine {
       temp=(items[i][0] + " (" + getItemOccurrences(items[i][0], items, itemsCount) + ")\n");
       ans=temp+ans;
     }
-
-    return ans; // default return statement added to avoid compiler errors.
-                // Feel free to change it.
+    return ans; 
   }
-
 }
