@@ -1,3 +1,5 @@
+This activity is designed to give you practice working with a single branch within a local Git repository. By the end of this activity, you should be able to both inspect the history of past versions within a single branch, and also make new changes of your own to extend this history.
+
 # Setup FirstGit Activity
 We've made some improvements to the cs400 script that you have been using over the past two weeks, so start by downloading an updated version of that script to your virtual machine with the following command:
 dst=/usr/local/bin/cs400 && sudo wget -O $dst https://pages.cs.wisc.edu/~cs400/cs400 && sudo chmod 755 $dst
