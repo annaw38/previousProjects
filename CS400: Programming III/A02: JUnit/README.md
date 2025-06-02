@@ -1,3 +1,5 @@
+This activity is designed to give you practice compiling and running java code, as well as developing and using junit tests. By the end of this activity, you should be able to compile and run java code along with junit tests for that code from the command line.
+
 # Practice Compiling and Running Java Code from the Command Line
 Review the provided definitions for the ListADT interface, the MyList class, and the sample Main application that makes use of them.
 Use the javac command to compile each of these three source files, and then use the java command to run the entry point within Main.
