@@ -1,0 +1,11 @@
+
+config {
+  type: "table",
+  name: "wi_county_schools",
+}
+
+SELECT s.*, c.county_name, ST_GEOGPOINT(s.longitude, s.latitude) AS location
+FROM ${ref('schools')} AS s
+CROSS JOIN ${ref('wi_counties')} AS c
+WHERE ST_WITHIN(ST_GEOGPOINT(s.longitude, s.latitude), c.county_geom) 
+

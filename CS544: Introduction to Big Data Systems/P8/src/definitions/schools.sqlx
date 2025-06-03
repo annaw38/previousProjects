@@ -1,0 +1,12 @@
+
+config {
+  type: "operations",
+  name: "schools",
+  hasOutput: true,
+}
+
+LOAD DATA OVERWRITE still-protocol-457514-r0.p8.schools
+FROM FILES(
+    uris=["gs://cs544p8bucket/wi-schools-raw.parquet"],
+    format="parquet"
+)
