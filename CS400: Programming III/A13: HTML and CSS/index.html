@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<title>Hash Tables</title>
+		<meta name = "author" content = "Anna Wang"/>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+
+	<body>
+		<h1>Hash Tables</h1>
+		<img src= "hashtable.png" width = "300"/>
+		<h1>What are Hash Tables?</h1>
+		<p>A hash table or hash map is a data structure that uses a hash function to map keys to values. A hash function is an algorithm or formula that calculates the index to put a value in the hash table. A perfect hash function maps every key to a unique hash index.</p>
+		
+		<h2 class = "properties">Properties of a good Hash Function</h2>
+		<ul class = "list">
+			<li id="required">Must be deterministic</li>
+			<li>Should achieve unidorm distribution across output range</li>
+			<li>Should minimize collisions</li>
+			<li>Should be fast and easy to compute</li>
+		</ul>
+
+		<h2 class = "properties">Hash Table properties</h2>
+		<ul class = "list">
+			<li>Hash Table: an array that contains (key, value) pairs</li>
+			<li>Table Size: the current capacity of the hash table(the length of the array)</li>
+			<li>Load Factor(LF): (number of key, value pairs in the table)/(table size)</li>
+		</ul>
+
+		<h2>What is a collision?</h2>
+		<p>A collision is when two keys has the same index based on the hash function.</p>
+
+		<h3>Ways to handle collisions</h3>
+		<ul class = "list">
+			<li>Open Addressing</li>
+				<ul>
+					<li>Linear Probing</li>
+					<li>Quadratic Probing</li>
+					<li>Double Hashing</li>
+				</ul>
+			<li>Chaining</li>
+		</ul>
+
+		<h1>Resizing and Rehashing</h1>
+		<h2>Resizing</h2>
+		<h3>When to resize?</h3>
+		<p>Resize the table when it is "full" or when the lf >= lf threshold</p>
+		
+		<p>The load factor threshold is defined by the user of the data structure, a good default threshold is (.70-.80).</p>
+
+		<h2>Rehashing</h2>
+		<p>Rehashing is the process of doubling the capacity of the array and recalculating the index of each of the pairs already stored in the array with the new capacity.</p>
+
+		<h2>Click the link below to learn more about hash tables!</h2>
+		<h3><a href = "https://www.geeksforgeeks.org/hashtable-in-java/">Hashtables!</a></h3>
+	
+	</body>
+</html>

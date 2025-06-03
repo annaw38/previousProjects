@@ -1,0 +1,27 @@
+body{
+	background-color: Lavender;
+
+}
+
+#required{
+        color: red;
+}
+.properties{
+        color: slateblue;
+       	background-color: lightblue;
+}
+.list{
+	border-color: aqua;
+	border-style: dashed;
+}
+h1{
+	color: mediumpurple;
+}
+h2{
+	color: plum;
+	font-family: Garamond;
+}
+h3{
+	color: Orchid;
+}
+
