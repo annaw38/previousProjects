@@ -1,0 +1,15 @@
+FROM p4-hdfs
+
+RUN apt-get update && apt-get install -y python3 pip 
+RUN python3 -m pip install grpcio-tools==1.70.0 grpcio==1.70.0 protobuf==5.29.3 sqlalchemy SQLAlchemy mysql-connector-python pandas pyarrow requests argparse --break-system-packages 
+COPY server.py ./server.py
+COPY lender.proto ./lender.proto
+COPY client.py ./client.py
+RUN python3 -m grpc_tools.protoc -I=. --python_out=. --grpc_python_out=. lender.proto
+#CMD ["python3",  "server.py"]
+CMD export CLASSPATH=`$HADOOP_HOME/bin/hdfs classpath --glob` && \
+    python3 server.py
+    
+
+#RUN python3 server.py
+
