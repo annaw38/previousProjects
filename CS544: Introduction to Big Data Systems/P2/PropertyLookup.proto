@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+message zip_data{
+	int32 zip = 1;
+	int32 limit = 2;	
+
+}
+message addrs{
+	repeated string addr = 1;
+
+}
+
+
+service PropertyLookup{
+	rpc LookupByZip (zip_data) returns (addrs);
+
+}
+
+

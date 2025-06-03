@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/home/zongokafando/p2_awang282_zongokafando/dataset.py", line 21, in <module>
+    server.wait_for_termination()
+  File "/home/zongokafando/p2_awang282_zongokafando/env/lib/python3.12/site-packages/grpc/_server.py", line 1494, in wait_for_termination
+    return _common.wait(
+           ^^^^^^^^^^^^^
+  File "/home/zongokafando/p2_awang282_zongokafando/env/lib/python3.12/site-packages/grpc/_common.py", line 156, in wait
+    _wait_once(wait_fn, MAXIMUM_WAIT_TIMEOUT, spin_cb)
+  File "/home/zongokafando/p2_awang282_zongokafando/env/lib/python3.12/site-packages/grpc/_common.py", line 116, in _wait_once
+    wait_fn(timeout=timeout)
+  File "/usr/lib/python3.12/threading.py", line 655, in wait
+    signaled = self._cond.wait(timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/threading.py", line 359, in wait
+    gotit = waiter.acquire(True, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

@@ -1,0 +1,9 @@
+FROM ubuntu:24.10
+RUN apt-get update && apt-get install -y python3 pip 
+RUN python3 -m pip install grpcio-tools==1.70.0 grpcio==1.70.0 protobuf==5.29.3 pandas==2.2.2 --break-system-packages 
+COPY addresses.csv.gz ./addresses.csv.gz
+COPY PropertyLookup.proto ./PropertyLookup.proto
+COPY dataset.py ./dataset.py 
+RUN python3 -m grpc_tools.protoc -I=. --python_out=. --grpc_python_out=. PropertyLookup.proto
+CMD ["python3", "./dataset.py"]
+
