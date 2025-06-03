@@ -1,0 +1,11 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1740858525.218835  215265 chttp2_server.cc:1672] UNKNOWN:No address added out of total 1 resolved for '0.0.0.0:5440' {created_time:"2025-03-01T13:48:45.218818154-06:00", children:[UNKNOWN:Failed to add any wildcard listeners {created_time:"2025-03-01T13:48:45.218760654-06:00", children:[UNKNOWN:Unable to configure socket {fd:5, created_time:"2025-03-01T13:48:45.218715013-06:00", children:[UNKNOWN:bind: Address already in use (98) {created_time:"2025-03-01T13:48:45.21867582-06:00"}]}, UNKNOWN:Unable to configure socket {created_time:"2025-03-01T13:48:45.218757472-06:00", fd:5, children:[UNKNOWN:bind: Address already in use (98) {created_time:"2025-03-01T13:48:45.218753603-06:00"}]}]}]}
+Traceback (most recent call last):
+  File "/home/awang282/p3_awang282_zongokafando/server.py", line 74, in <module>
+    server.add_insecure_port("0.0.0.0:5440")
+  File "/home/awang282/p3_awang282_zongokafando/venv/lib/python3.12/site-packages/grpc/_server.py", line 1473, in add_insecure_port
+    return _common.validate_port_binding_result(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/awang282/p3_awang282_zongokafando/venv/lib/python3.12/site-packages/grpc/_common.py", line 181, in validate_port_binding_result
+    raise RuntimeError(_ERROR_MESSAGE_PORT_BINDING_FAILED % address)
+RuntimeError: Failed to bind to address 0.0.0.0:5440; set GRPC_VERBOSITY=debug environment variable to see detailed error message.

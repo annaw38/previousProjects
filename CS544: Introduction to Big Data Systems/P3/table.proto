@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+
+message UploadReq {
+	bytes csv_data = 1;
+}
+
+
+message ColSumReq{
+	string column =1;
+	string format = 2;	
+}
+message response{
+	string error = 1;
+	int64 total = 2;
+
+}
+
+
+service Table{
+	rpc Upload(UploadReq)  returns (response);
+	rpc ColSum(ColSumReq) returns (response);
+}
+
+
+	
