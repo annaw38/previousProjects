@@ -1,0 +1,5 @@
+Your responsibility this week is to work with your group of 6 to design the interfaces that you will implement in a future week (P24.Role Code). In another future week (P13.ShortestPath) you will implement Dijkstra's shortest path algorithm as part of a graph data structure that will be shared with you. The graph will implement the this interface: GraphADT.java. You can use these types in the interfaces you'll create this week.
+
+# Create Initial Interface Version
+Once you have completed your list, create a set of methods that expose the listed functionality. Find descriptive method names and choose clearly named parameters for them. It can be helpful to add any additional information (such as, for example, the desired behavior in edge cases) as a header comment to the method.
+Add constructors as comments to the interface definitions. Even though interfaces do not support defining constructors directly, it is good practice to add constructors and their parameter list that every implementation is expected to have. Generally, the constructors should accept references to objects as parameters on which the class depends.
