@@ -1,0 +1,5 @@
+graph help {
+    "my house" -- "mount everest" [seconds=40.0];
+    "my house" -- "my house" [seconds=1];
+    "me" -- "mount everest" [seconds=2.0];
+}
