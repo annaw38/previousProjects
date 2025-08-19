@@ -1,9 +1,5 @@
 # Machine Project 7: Intro to Regression Models
 
-## Corrections/Clarifications
-
-* None yet
-
 ## Overview
 
 We will be making predictions about census data for Wisconsin using
@@ -14,44 +10,6 @@ construct DataFrames suitable for training during this machine project:
 * `tracts.shp` - boundaries of each census tract (counties are subdivided into tracts)
 * `counties_tracts.db` - details about housing units per tract
 * `land.zip` - details about land use (farm, forest, developed, etc.)
-
-### Learning Objectives
-
-During this machine project, students will:
-- Extract, transform, and load data from multiple data sources into one DataFrame for training
-machine learning models.
-- Analyze machine learning model performance using several different metrics and factoring in feature
-impact on the model score.
-- Plot geographical data using the `geopandas` module.
-
-## Setup
-
-Before you begin, follow the "starting a machine project" instructions in the [git-workflows](../git-workflows/README.md/#starting-a-machine-project) document to make sure that you are on the right branch and have the right files.
-
-## Testing
-
-Be sure to run `python3 tester.py mp7.ipynb` regularly to estimate your grade.
-
-## Submission
-
-**Required Files**
-* `mp7.ipynb`: A notebook that contains the answers to the questions found below.
-
-To submit the machine project, make sure that you have followed the instructions for "submitting a machine project"
-in the [git-workflows](../git-workflows/README.md/#submitting-a-machine-project) document for the required file(s) above.
-
-When following the submission instructions from above, the final output should look similar to this in GitLab:
-
-<img src="./successful-submission.PNG">
-
-If you do not know how to get to this screen, review the link above. If you are having issues, please come to office hours.
-
-### Important Notes:
-1. Hardcoding of any kind or trying to "cheat" the autograder **will be penalized heavily and can also result in 0 marks for all the projects**. If you are confused about your code, please reach out to the teaching staff before submission.
-
-# Group Part (73%)
-
-For this portion of the machine project, you may collaborate with your group members in any way (including looking at group members' code). You may also seek help from CS 320 course staff (peer mentors, TAs, and the instructor). You **may not** seek or receive help from other CS 320 students (outside of your group) or anybody else outside of the course.
 
 ## Part 1: Predicting Population using Area
 
@@ -125,20 +83,6 @@ by summing the housing units in each tract of the county.
 
 **Split your updated GeoDataFrame into a train and test set, the same
 way you did previously.**
-
-**Hints**
-1. If I have the same column  in two separate tables, I can run the
-following SQL to join based on that column:
-```
-SELECT table1.column1, column2, column3
-FROM table1
-INNER JOIN table2
-ON table1.column1 == table2.column1
-```
-2. The order of the counties may not be the same from your original DataFrame
-and the one you get from this step. Thus, when you merge them together, consider
-using the `pd.merge(...)` function with the `on=????` parameter or the `left_on=????`
-and `right_on=????` parameters: https://pandas.pydata.org/docs/reference/api/pandas.merge.html.
 
 ### Q6: What are the counties in the test dataset?
 
@@ -284,10 +228,6 @@ population (you may **NOT** reuse open water -- choose a different type for
 your plot):
 
 <img src="fig/q16.png" width="500">
-
-# Individual Part (27%)
-
-For this portion of the machine project, you are only allowed to seek help from CS 320 course staff (peer mentors, TAs, and the instructor). You **may not** receive help from anyone else.
 
 For this part, you'll try to predict population on a **per-census
 tract** basis (in contrast to our preceding per-county analysis),
