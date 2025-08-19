@@ -1,9 +1,5 @@
 # Machine Project 4: Graph Traversal and Web-Scraping
 
-## Corrections and Clarifications
-
-* None yet
-
 ## Overview
 
 In this machine project, we will continue to build on the OOP principles from last machine project.
@@ -13,18 +9,6 @@ inherit from the `GraphSearcher` class that allow us to traverse through **diffe
 forms** of graphs. Finally, we will learn some web-scraping techniques in *Selenium*
 that will allow us to get information from a dynamically loaded website and complete
 a scavenger hunt using the information we acquire.
-
-### Learning Objectives
-
-During this machine project, students will:
-- Practice with the Object-Oriented Programming (OOP) paradigm by creating custom
-classes for traversing different graphs.
-- Create different graph structures using matrices, files, and a website.
-- Scrape dynamically loaded websites using selenium.
-
-## Setup
-
-Before you begin, follow the "starting a machine project" instructions in the [git-workflows](../git-workflows/README.md/#starting-a-machine-project) document to make sure that you are on the right branch and have the right files.
 
 ## Testing
 
@@ -50,30 +34,6 @@ import scrape
 %load_ext autoreload
 %autoreload 2
 ```
-
-## Submission
-
-**Required Files**
-* `scrape.py`: A Python module containing the classes `GraphSearcher` (parent class),
-`MatrixSearcher` (child class), `FileSearcher` (child class), `WebSearcher` (child class), and `reveal_secrets` which is a function you will create later.
-
-To submit the machine project, make sure that you have followed the instructions for "submitting a machine project"
-in the [git-workflows](../git-workflows/README.md/#submitting-a-machine-project) document for the required file(s) above.
-
-When following the submission instructions from above, the final output should look similar to this in GitLab:
-
-<img src="./successful-submission.PNG">
-
-If you do not know how to get to this screen, review the link above. If you are having issues, please come to office hours.
-
-### Important Notes:
-1. Hardcoding of any kind or trying to "cheat" the autograder **will be penalized heavily and can also result in 0 marks for all the projects**. If you are confused about your code, please reach out to the teaching staff before submission.
-
-# Group Part (75%)
-
-For this portion of the machine project, you may collaborate with your group members in any way (including looking at group members' code). You may also seek help from CS 320 course staff (peer mentors, TAs, and the instructor). You **may not** seek or receive help from other CS 320 students (outside of your group) or anybody else outside of the course.
-
-<!-- TODO: Update lab link -->
 
 ## Part 1: Parent Class `GraphSearcher` and DFS on Matrices (`MatrixSearcher`)
 
@@ -151,10 +111,6 @@ print(fs.visit_and_get_children("1.txt"), fs.order, fs.concat_order())
 Expected result: `['2.txt', '4.txt'] ['M'] M`.
 
 ## Part 3: Web Crawling (`WebSearcher`)
-
-**Don't start this part until we learned about Selenium in class and how
-to run it in "headless" mode.**
-
 For this part of the machine project you'll need to install Chrome and a few
 packages on your VM:
 
@@ -334,10 +290,6 @@ Expected output:
 If you get an error when running the above code that contains `ERR_CONNECTION_REFUSED`,
 make sure that you are currently running the application using `python3 application.py`.
 
-# Individual Part (25%)
-
-For this portion of the machine project, you are only allowed to seek help from CS 320 course staff (peer mentors, TAs, and the instructor). You **may not** receive help from anyone else.
-
 For part 4 of the machine project, you will be writing a function that will give us a password 
 for the main page of the application. Upon entering this password, we will be able to
 find a hidden location and picture. Our goal will be to extract the name of this
@@ -362,8 +314,3 @@ The function should do the following:
 5. Click the "View Location" button and wait until the result finishes loading
 6. Save the image that appears to a file named 'Current_Location.jpg' (use the `requests` module to do the download, once you get the URL from selenium)
 7. Return the current location that appears on the page (should be "CAMP RANDALL STADIUM")
-
-**Hints for step 6:** jpeg files are a binary format (they don't contain text for a human to read).  You'll need to do some searching online to learn how to (a) download binary data and (b) write it to a file.  Remember to cite any code you copy/paste.  Here are some example Google searches you might start with to find how to do these things:
-
-* "how to write bytes to a file in python"
-* "how to fetch a binary file with python requests"
