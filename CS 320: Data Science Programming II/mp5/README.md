@@ -1,9 +1,5 @@
 # Machine Project 5: Building a Data Website
 
-## Corrections/Clarifications
-
-* None yet
-
 ## Overview
 
 In this machine project, you'll build a website that shares a dataset -- you
@@ -23,19 +19,7 @@ More information on these requirements will be detailed below.
 Your `.py` file may be short, perhaps less than 100 lines, but it will probably
 take a fair bit of time to get those lines right.
 
-### Learning Objectives
-
-During this machine project, students will:
-- Build a web application for sharing data/information on the internet using
-the Flask framework.
-- Practice data visualization methods to create informative SVG plots relating
-to a dataset that the student chooses.
-- Create regular expressions for basic email validation.
-- A/B test two different versions of a homepage to optimize donations.
-
 ## Setup
-
-Before you begin, follow the "starting a machine project" instructions in the [git-workflows](../git-workflows/README.md/#starting-a-machine-project) document to make sure that you are on the right branch and have the right files.
 
 For this machine project, we will need some additional modules. You can install them by running the
 following line in your VM's command line:
@@ -43,38 +27,6 @@ following line in your VM's command line:
 ```
 pip3 install Flask lxml html5lib beautifulsoup4
 ```
-
-## Testing
-
-Run `python3 tester.py` inside of your `mp5` directory (your program must be named `main.py`) and work on fixing any issues.
-
-## Submission
-
-**Required Files**
-* `main.py`: A Python module containing the code for your Flask web application.
-* `main.csv`: A CSV file that contains the dataset you have chosen for this machine project. If the dataset initially has a different name, please rename it to `main.csv`, otherwise you will lose points when running the tester.
-* `*.html`: All HTML files needed to run your website. For example, if you just have an `index.html` file, that would be all you need to submit. If you have an `index.html` file, a `donate.html` file, and more `.hmtl` files, you would need to commit all of them.
-* `dashboard1.svg`: An SVG of your first data visualization.
-* `dashboard1-query.svg`: An SVG of your first data visualization using a query string (i.e. this one should change with a query string and appear different from `dashboard1.svg`).
-* `dashboard2.svg`: An SVG of your second data visualization.
-
-To submit the machine project, make sure that you have followed the instructions for "submitting a machine project"
-in the [git-workflows](../git-workflows/README.md/#submitting-a-machine-project) document for the required file(s) above.
-
-When following the submission instructions from above, the final output should look similar to this in GitLab:
-
-<img src="./successful-submission.PNG">
-
-If you do not know how to get to this screen, review the link above. If you are having issues, please come to office hours.
-
-**Important:** make sure your program is named `main.py` and your dataset is named `main.csv`.
-
-### Important Notes:
-1. Hardcoding of any kind or trying to "cheat" the autograder **will be penalized heavily and can also result in 0 marks for all the projects**. If you are confused about your code, please reach out to the teaching staff before submission.
-
-# Group Part (80%)
-
-For this portion of the machine project, you may collaborate with your group members in any way (including looking at group members' code). You may also seek help from CS 320 course staff (peer mentors, TAs, and the instructor). You **may not** seek or receive help from other CS 320 students (outside of your group) or anybody else outside of the course.
 
 ## Part 1: Data Selection
 
@@ -236,14 +188,8 @@ data as normal. However, if they **have** requested the data at this resource in
 Check the client IP with `request.remote_addr`.  Do not allow more
 than one request per minute from any one IP address.
 
-**Hint 1:** consider combining Flask's `jsonify` with Pandas `to_dict`: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_dict.html
-
-**Hint 2:** we cover rate limiting in the future lecture.
-
 ### Requirement: `visitors.json`
 Now add a resource at `http://your-ip:5000/visitors.json` that returns a list of the IP addresses that have visited your `browse.json` resource. We could think of this resource as a list of who has downloaded or viewed our `browse.json` resource.
-
-**Hint 1:** use the client IPs stored in previous exercise (rate limiting). 
 
 ### Requirement: `donate.html` page
 
@@ -268,29 +214,6 @@ For the first 10 times your homepage is visited, alternate between version
 A and B each time.  After that, pick the best version (the one where
 people click to donate most often), and keep showing it for all future
 visits to the page.
-
-**Hint 1:** consider having a `global` counter in `main.py` to keep track of
-how many times the homepage has been visited.  Consider whether this
-number is 10 or less and whether it is even/odd when deciding between
-showing version A or B for alternations.
-
-**Hint 2:** when somebody visits `donate.html`, we need to know if
-they took a link from version A or B of the homepage.  The easiest
-way is using query strings. On version A of the homepage, instead of
-having a regular link to `donate.html`, link to
-"donate.html?from=A", and in the link on version B to `donate.html`,
-use "donate.html?from=B".  Then the handler for the `donate.html`
-route can keep count of how much people are using the links on both
-versions of the home page. However, be sure to still allow for your
-donate page to be accessible without a query string as well. For 
-example, if someone were to just type YOUR-IP:5000/donate.html 
-directly into their browser.
-  
-**Hint 3:** You don't necessarily need to have two different versions
-of your homepage to make this work. You could use the templating
-approach: once you read your `index.html` file into your program, you
-can replace pieces of it. At that point it should be a string, so you could add
-something to it or replace something in it.
 
 ## Part 4: Emails
 
@@ -364,10 +287,6 @@ added.
 **Note:** you can find information about `jsonify`
 [here](https://flask.palletsprojects.com/en/2.2.x/api/#flask.json.jsonify).
 
-# Individual Part (20%)
-
-For this portion of the machine project, you are only allowed to seek help from CS 320 course staff (peer mentors, TAs, and the instructor). You **may not** receive help from anyone else.
-
 ## Dashboard
 
 Implement a dashboard on your homepage showing at least 3 SVG images.
@@ -395,10 +314,6 @@ strings** (resulting in different plots).
 Plots should have labels for both axes and optionally with a title.
 * Similarly, there is no restriction on the choice of query string parameters, as long as the resulting plots are distinct.
 
-**Hint 1:** having distinct plots assume that you **do not** reuse a significant portion of code that was used to create an earlier plot. Changing which columns should be placed for the x and y axes do not suffice.
-
-**Hint 2:** you can check out many different types of plots. That is, other than scatter plots, you can utilize histograms or boxplots to capture the pattern/insight that your dataset contains ([see examples](https://matplotlib.org/stable/plot_types/index.html)). Take a careful look at your data and explore which types of plots you can work with.
-
 E.g., We could have a dashboard with the following lines added to the
 `index.html` file (you're encouraged to use more descriptive names for
 your `.svg` routes).
@@ -425,5 +340,3 @@ Here, the query string uses `bins`, which in this case specifies the number of b
 ![Dashboard_2](img/plot_timeseries.svg)
 
 When using query strings, ensure appropriate default values are supplied.
-
-Finally, to help your TAs grade these plots, save the above plots locally as `dashboard1.svg`, `dashboard1-query.svg`, and `dashboard2.svg`, respectively.
