@@ -1,9 +1,5 @@
 # Machine Project 8: Selling Laptops - Smart Marketing
 
-## Corrections/Clarifications
-
-* None yet
-
 ## Overview
 
 In this machine project, you are the owner of a retail website. You're planning on 
@@ -15,32 +11,6 @@ to help you predict which users may be interested in the promotion.
 
 You should create your classifier in a `main.py` file, which will be
 the only thing you'll submit.
-
-You can collaborate with your team on the **entire** machine project (no
-individual part!).  As usual, you cannot work with anybody outside of
-your team and can only get help from 320 staff.
-
-### Learning Objectives
-
-During this machine project, students will:
-- Extract, transform, and load data from multiple data sources into one DataFrame for training
-machine learning models.
-- Analyze machine learning model performance using several different metrics and factoring in feature
-impact on the model score.
-
-## Grading Guidelines
-
-You can decide what features to consider and how to create your
-classifier. Your grade will correspond to the accuracy of your
-predictions. 50% accuracy and below will give a grade of 0%, whereas
-accuracy of 75% and above will give a grade of 100%; any accuracy
-between 50 and 75 will be rescaled to a 0-100% grade.  Some models can
-get better than 90% accuracy, so we encourage you to keep improving
-your model beyond what is necessary for full credit if you have time.
-
-## Setup
-
-Before you begin, follow the "starting a machine project" instructions in the [git-workflows](../git-workflows/README.md/#starting-a-machine-project) document to make sure that you are on the right branch and have the right files.
 
 ## Testing
 
@@ -58,23 +28,6 @@ Here are some tips to avoid surprises:
 scores = cross_val_score(model, train_users[self.xcols], train_y["y"])
 print(f"AVG: {scores.mean()}, STD: {scores.std()}\n")
 ```
-
-## Submission
-
-**Required Files**
-* `main.py`: A Python module which has the `UserPredictor` class in it.
-
-To submit the machine project, make sure that you have followed the instructions for "submitting a machine project"
-in the [git-workflows](../git-workflows/README.md/#submitting-a-machine-project) document for the required file(s) above.
-
-When following the submission instructions from above, the final output should look similar to this in GitLab:
-
-<img src="img/successful-submission.PNG">
-
-If you do not know how to get to this screen, review the link above. If you are having issues, please come to office hours.
-
-### Important Notes:
-1. Hardcoding of any kind or trying to "cheat" the autograder **will be penalized heavily and can also result in 0 marks for all the projects**. If you are confused about your code, please reach out to the teaching staff before submission.
 
 ## Dataset
 
@@ -184,6 +137,3 @@ otherwise, you're predicting they will not.
 * Some users may not have any rows in logs if they didn't visit the website at all.  Consider how you'll deal with this.
 
 * You're welcome to learn new classification models in sklearn and use them for this machine project, but we imagine most of you will build pipelines based on LogisticRegression, the classifier we learned in class.  Remember that in many scenarios LogisticRegression does best in a pipeline where there is a preceding StandardScaler.  LogisticRegression doesn't like large/small numbers or non-centered data, so StandardScaler transforms the data to work better with LogisticRegression.
-
-
-* If you plan to work with your team members (not required, as usual), consider how you may want to divide the work.  One possibility: each team member could try a different model; after comparing them, all team members could submit the one model that scores best.  Alternatively, each team member could be responsible for computing different per-user stats to use as features for training/predicting.  Of course, avoid getting in a situation where you are dependent on any one person to complete the machine project; this machine project should be a reasonable amount of work, even for somebody working individually.
