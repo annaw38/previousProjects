@@ -6,13 +6,6 @@ This machine project focuses on review of concepts needed to succeed in this cou
 designed to get familiar with Python basics (or review them if you
 took 220).
 
-### Learning Objectives
-
-During this machine project, students will:
-- Write code to control the flow of execution using loops, functions, and if statements.
-- Extract values from Python state (variables, data structures, etc.) including nested lists and dictionaries.
-- Use the `pandas` package to read CSV files into DataFrames and analyze and plot the resulting data.
-
 ## Part 1: Python Control Flow
 
 For part 1, you will focus on how to implement logic in Python and alter the control flow 
