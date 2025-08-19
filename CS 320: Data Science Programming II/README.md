@@ -8,3 +8,8 @@
 - Review basic webscraping concepts and analyze the gathered data.
 - Analyze the history of a git project.
 - Measure performance of different functions by benchmarking.
+## MP3
+- Practice with the Object-Oriented Programming (OOP) paradigm by creating custom classes for analyzing loan data.
+- Work with analyzing large datasets.
+- Create efficient data structures for data storage and lookup.
+- Develop custom tests to ensure code quality.
