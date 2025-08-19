@@ -1,9 +1,5 @@
 # Machine Project 1: Review
 
-## Corrections and Clarifications
-
-* None yet
-
 ## Overview
 
 This machine project focuses on review of concepts needed to succeed in this course; it is
@@ -16,100 +12,6 @@ During this machine project, students will:
 - Write code to control the flow of execution using loops, functions, and if statements.
 - Extract values from Python state (variables, data structures, etc.) including nested lists and dictionaries.
 - Use the `pandas` package to read CSV files into DataFrames and analyze and plot the resulting data.
-
-## Setup
-
-Make sure to complete [Lab 1](../labs/Lab1/README.md) before starting this, as it must be done on your
-virtual machine.
-
-1. SSH to your virtual machine by running `ssh USERNAME@IP_ADDRESS`
-
-If you don't recall these from lab, you can find your [username](https://console.cloud.google.com/compute/metadata/sshKeys)
-and [External IP address](https://console.cloud.google.com/compute/instances) in Google's
-console.
-
-2. Run `pip3 install pandas matplotlib`
-
-3. Please refer to the [git-workflows](../git-workflows/README.md/#getting-started-with-your-vm) for how to clone your personal GitLab repository. 
-
-4. Go to `http://YOUR_IP_ADDRESS:2020/` in the browser (sign in, if prompted)
-
-Jupyter should still be running from when you started it during lab, but if it's not, you can start it again with the following:
-
-`nohup python3 -m jupyterlab --no-browser --ip=0.0.0.0 --port=2020 &`
-
-1. **Follow the "starting a machine project" instructions in the [git-workflows](../git-workflows/README.md/#starting-a-machine-project)
-document to make sure that you are on the right branch and have the right files.**
-
-2. Enter the `mp1` directory (expand the folder icon on the left of the screen if you don't see these directories)
-
-3. Click to create a new `Python 3 (ipykernel)` notebook
-
-4. Go to "File" > "Rename Notebook", and name your notebook "mp1.ipynb"
-
-**Note:** some browsers have a "dark mode" -- be careful not to use it when looking at plot examples (it often hides axis labels in the examples, which you need for full credit).
-
-## Testing
-
-Your notebook should follow this format to be compatible with the tester:
-
-```python
-# import statements in the top cell
-```
-
-```python
-#Q1
-some code
-output answer
-```
-
-```python
-#Q2
-some code
-output answer
-```
-
-For example, if question 0 was "What is 10 - 3?", our cell would look like this:
-
-```python
-#Q0
-answer = 10 - 3
-answer # Notice that we just put the variable name -- don't print it or you will get an error
-```
-
-To test your answers, do the following:
-1. Do a "Kernel" > "Restart Kernel & Run All Cells" in your notebook
-2. "File" > "Save Notebook"
-3. In terminal, navigate to your machine project 1 directory
-4. Run `python3 tester.py mp0.ipynb` and work on fixing any issues
-
-**Notes**: 
-* ***Do not*** include the question, or anything else after "#Q__" or else we may be unable to
-parse your notebook.
-* It is okay to include additional cells outside of these, but only questions that have "#Q__" as
-the first line will be graded.
-* You need to do a "Restart Kernel & Run All Cells" each time you make modifications to your
-notebook. Wait for all cells to run before saving. If you get an error that says "Expected
-execution count XX but found YY", you need to do this again.
-
-## Submission
-
-**Required Files**
-* `mp1.ipynb`: A notebook that should contain all of your answers to the machine project questions below.
-
-To submit the machine project, make sure that you have followed the instructions for "submitting a machine project"
-in the [git-workflows](../git-workflows/README.md/#submitting-a-machine-project) document for the required file(s) above.
-
-When following the submission instructions from above, the final output should look similar to this in GitLab:
-
-<img src="./successful-submission.PNG">
-
-If you do not know how to get to this screen, review the link above. If you are having issues, please come to office hours.
-
-### Important Notes:
-1. This whole assignment is to be done **individually**. That means, you are only allowed to seek help from CS 320 course staff (peer mentors, TAs, and the instructor). You may not receive help from anyone else.
-2. Hardcoding of any kind or trying to "cheat" the autograder **will be penalized heavily and can also result in 0 marks for all the projects**. If you are confused about your code, please reach out to the teaching staff before submission.
-
 
 ## Part 1: Python Control Flow
 
@@ -137,10 +39,6 @@ in_range = ???? # True if the number of fruits in fruit_list is inside the minim
 in_range
 ```
 
-**Notes**:
-1. We don't need to specify the type of our variables as in some languages (e.g., Java) -- Python knows `x` is an `int` because we assigned `4`, which is an int. Variable types are not fixed after creation as in some languages (e.g., Go) -- we could later run `x = "howdy"` if we wanted to.
-2. In Python, a `bool` is `True` or `False`. We use the `and`, `or`, and `not` operators to operate on `bool`s. In other programming languages, these operators are often expressed as `&&`, `||`, and `!` respectively.
-
 ### Q3: Ignoring case, how many of the files in `filepaths` end in `.csv`?
 
 Complete the code below for your answer:
@@ -154,14 +52,6 @@ for file in file_list:
         csv_count += 1
 csv_count
 ```
-
-**Hints**:
-1. Consider starting by splitting the string into a list of strings. Notice that they are all separated by `-`. 
-2. To ignore case, it's often easy to use a string method to make everything uppercase or lowercase.
-3. To get a single character from a string `s`, you can use `s[INDEX]`. 0 is the first character, 1 is the second, and so on. Python supports negative indexing, meaning `s[-1]` is the last letter, `s[-2]` is the next to last, etc. You can also slice strings to get a substring by putting a colon between two indexes `s[inclusive_start:exclusive_end]`. You can leave off one of the indexes to go to the start or end of the string. For example, `filepath[:7]` would evaluate to `"TESTING"`.
-4. In Java, you compare strings with `s1.equals(s2)`, but in Python the correct equivalent is `s1 == s2`. The equivalent of Java's `==` is Python's rarely used `is` operator.
-
-In addition to built-ins, Python defines several methods for specific objects like strings. Skim the string methods here: https://docs.python.org/3/library/stdtypes.html#string-methods. Some important ones: `find`, `isdigit`, `join`, `split`, `lower`, `upper`, `strip`, `replace`.
 
 ### Requirement: `multiply` function
 
@@ -237,13 +127,9 @@ Docs:
 * https://docs.python.org/3/tutorial/datastructures.html#more-on-lists
 * https://docs.python.org/3/tutorial/datastructures.html#dictionaries
 
-**Testing Note:** try running `{"A":1, "B":2} == {"B":2, "A":1}` in Python. Note that these two dicts are considered equivalent since they have the same values corresponding to the same keys.  So if the tester complains about any of your dicts (or sets) being wrong, the issue is with the contents, not the order.
-
 ### Q6: After inserting a "z" key in `coord1` (with `coord1["z"] = 6`), what is `rows`?
 
 ### Q7: What is the value associated with the "y" key of the dict in the last position of the last list in `rows`?
-
-**Hint:** For navigating nested structures, use list indices and dictionary keys to access deeper elements. For example, to access the "z" key of the dictionary in the second list in `rows`, you would use `rows[1][-1]["z"]`. This is because `rows[1]` gives us the second list in `rows` (`[3, 4, 9, {"x": 9, "y": 2, "z" : 4}]`), `rows[1][-1]` gives us the last element of the second list in `rows` (`{"x": 9, "y": 2, "z" : 4}`), and then `rows[1][-1]["z"]` extracts the value for the "z" key in that dictionary.
 
 ### Q8: What is `rows` after running the following?
 
@@ -277,26 +163,6 @@ Note: the "A" column corresponds to the values at index in 0 of each list, but y
 Docs:
 * https://docs.python.org/3/howto/sorting.html#sorting-basics
 * https://docs.python.org/3/howto/sorting.html#key-functions
-
-Hint: if we had to sort by the "A" column **ascending**, we could do the following:
-
-```python
-def get_column_a(row):
-    print("lookup A column for a row")
-    return row[header.index("A")]
-
-rows.sort(key=get_column_a, reverse=False)
-rows
-```
-
-Note that we aren't calling `get_column_a` ourselves (because there are no parentheses after it on the sort line).  Instead, we're giving the `sort` method a reference to that function; this allows `sort` to call the function on each row, to figure out what part of the row objects matters for the sort.
-
-When we only need a function for one purpose, we can use the `lambda` syntax instead of the `def` syntax to define the function on a single line, without even giving it a name.  The following works the same as the earlier example (but without the print):
-
-```python
-rows.sort(key=lambda row: row[header.index("A")], reverse=False)
-rows
-```
 
 ### Q11: Say you're going on vacation to Canada with 400 US dollars; how many Canadian dollars can you get at the current exchange rate?
 
@@ -343,11 +209,6 @@ Write a function named `convert_to_int` that will attempt to convert its input i
 
 How to catch exceptions: https://docs.python.org/3/tutorial/errors.html#handling-exceptions.
 
-**Hints**:
-1. To find out what exception to print `"Could not convert string to int."` for, you could try running `int("forty-two")` in a new cell.
-2. You can catch specific exceptions like this: `except EXCEPTION_TYPE:`, but you can also catch all exceptions using just `except:`.
-3. Make sure you pay attention to the order of your `except` blocks.
-
 ### Q12: What is `convert_to_int("320")`?
 
 ### Q13: What is `convert_to_int("ninety-nine")`?
@@ -391,8 +252,6 @@ df_2016 = grades[2016]
 df_2016.loc[df_2016["course_subject"] == "Psychology"]
 ```
 
-**Note**: The `course_subject` for computer sciences classes is `"Computer Sciences"`. Alternatively, you could look them up using the `course_abbr` of `"COMP SCI"`. Consider saving this filtered DataFrame as a new variable for use in the next questions.
-
 ### Q18: How many students received an "A" in computer sciences courses in 2022?
 
 The data will be found in the column `"a_count"`.
@@ -435,11 +294,9 @@ Answer with a `dict`, where the key is the course's name, and the value is the p
  'COMP SCI 354': 0.20095238095238097}
 ```
 
-**Hint**: Consider using Pandas `to_dict()` function to convert a Series to a Python dictionary
-
 ### Q21: Same question as Q20, but answer with a bar plot instead of a `dict`.
 
-If you have a Series `s`, you can use `s.plot.bar()` or `s.plot.barh()`.  The labels of the x-axis and y-axis should be as shown in the below graph, as also seen (here)[./grading-guidelines.md]
+If you have a Series `s`, you can use `s.plot.bar()` or `s.plot.barh()`.  The labels of the x-axis and y-axis should be as shown in the below graph.
 
 Example:
 
