@@ -1,9 +1,5 @@
 # Machine Project 3: Loan Analysis
 
-## Corrections and Clarifications
-
-* None yet
-
 ## Overview
 
 Sadly, there is a long history of lending discrimination based on race
@@ -23,63 +19,6 @@ The public HDMA dataset spans all the states and many years, and is documented h
 
 In this machine project, we'll analyze every loan application made in Wisconsin in
 2020.
-
-### Learning Objectives
-
-There's a lot of new stuff here, and students have often reported back
-that P3 is the hardest of the semester, so we encourage you to start
-early.
-
-During this machine project, students will:
-- Practice with the Object-Oriented Programming (OOP) paradigm by creating custom classes for analyzing loan data.
-- Work with analyzing large datasets.
-- Create efficient data structures for data storage and lookup.
-- Develop custom tests to ensure code quality.
-- Write their own Python modules that can be used in other notebooks or scripts.
-
-## Setup
-
-Before you begin, follow the "starting a machine project" instructions in the [git-workflows](../git-workflows/README.md/#starting-a-machine-project) document to make sure that you are on the right branch and have the right files.
-
-Since it is still early in the semester, we have provided the commands for you to run below:
-
-```
-git checkout main # Switch to the main branch
-git pull # Pull the remote changes to your local branch
-git checkout MP3 # Switch to the MP3 branch
-git merge main # Merge the changes from main into MP3
-```
-
-Once you run these commands, you should verify that you are on the `MP3` branch by running `git branch`. Additionally, when you are in your git directory for this class, you should be able to run `ls` to see that this machine project and all of its files are present.
-
-You are now ready to begin the machine project. Make sure that you add-commit-push your code as you go.
-
-## Submission
-
-**Required Files**
-* `mp3.ipynb`: A notebook that should contain all of your answers to the machine project questions below.
-* `loans.py`: A Python module (.py file) containing classes for creating `Applicant`, `Loan`, and `Bank` objects. (Will start in lab)
-* `search.py`: A Python module (.py file) containing classes for creating `Node`, and `BST` objects. (Will start in lab)
-* `module_tester.py`: A Python script (.py file) for testing the two modules we wrote above.
-
-To submit the machine project, make sure that you have followed the instructions for "submitting a machine project"
-in the [git-workflows](../git-workflows/README.md/#submitting-a-machine-project) document for the required file(s) above.
-
-When following the submission instructions from above, the final output should look similar to this in GitLab:
-
-<img src="./successful-submission.PNG">
-
-**Note**: When we ran the autograder on this demonstration, we **did not** add in the additional tests. Make sure
-that you add in the additional tests in `module_tester.py` to achieve full marks.
-
-If you do not know how to get to this screen, review the link above. If you are having issues, please come to office hours.
-
-### Important Notes:
-1. Hardcoding of any kind or trying to "cheat" the autograder **will be penalized heavily and can also result in 0 marks for all the projects**. If you are confused about your code, please reach out to the teaching staff before submission.
-
-# Group Part (75%)
-
-For this portion of the machine project, you may collaborate with your group members in any way (including looking at group members' code). You may also seek help from CS 320 course staff (peer mentors, TAs, and the instructor). You **may not** seek or receive help from other CS 320 students (outside of your group) or anybody else outside of the course.
 
 ## Part 1: Loan Classes
 
@@ -172,36 +111,11 @@ aspects.
 There are not any specific requirements for additional testing -- just make sure 
 that you do add a new test (or more) and then give yourself more points.
 
-### Debugging the Module Tester
-
-If you are not currently passing the module tester, it is likely that you are failing one of the test cases which are created using `assert`. One common way of debugging these errors is by using print debugging. Here is an example of how print debugging might work for this machine project:
-
-Let's say the following `assert` statement is failing:
-
-```python
-...
-assert loans.Applicant("<25", []).lower_age() == 25
-...
-```
-
-Adding a print statement above this line with `loans.Applicant("<25", []).lower_age()` will let us know the output of this code. So our code would now look something like this:
-
-```python
-...
-print(loans.Applicant("<25", []).lower_age())
-assert loans.Applicant("<25", []).lower_age() == 25
-...
-```
-
-From here, we will be able to see what our code is outputting and can modify our code accordingly. For example, if we see that our code is printing `'25'`, we now know that our code is outputting a string instead of an int, and we can make the appropriate change in `loans.py` before rerunning the module tester.
-
 ## Part 2: Binary Search Tree
 
 For part 2 of this machine project, you will be creating custom classes for a `Node` and `BST` data structures. These classes will allow us to lookup specific `Loan` objects efficiently as we will see in the questions below.
 
 To begin, finish the `Node` and `BST` classes from [Lab 4](../labs/Lab4/README.md) (if you haven't already done so). 
-
-**Note:** if we haven't gotten to BSTs in lecture and lab yet, you can still work on some of the questions in parts 3 and 4, but you should wait to work on the ones related to trees.
 
 ### Special Method
 
@@ -251,10 +165,6 @@ The height is the number of edges in the path from the root to the deepest node.
 **Height:**
 
 <img src="img/bst_height.png" width="400px">
-
-# Individual Part (25%)
-
-For this portion of the machine project, you are only allowed to seek help from CS 320 course staff (peer mentors, TAs, and the instructor). You **may not** receive help from anyone else.
 
 For part 4 of this machine project, you will continue to do analysis using `Bank`, `Loan`, and `Appilcant` objects, only this time we will be using a bank
 that has more data associated with it. Additionally, we will do some more benchmarking to see how our new data structures improve
