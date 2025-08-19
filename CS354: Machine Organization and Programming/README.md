@@ -5,3 +5,6 @@ An introduction to fundamental structures of computer systems and C with a focus
 ## P1
 - Learn the different steps in compiling before running it.
 - Run the program to decode a mystery message specifically encoded with a backward shift of all characters based on login username. 
+
+## P2a
+- A program used to check if a sudoku board is valid or not. 
