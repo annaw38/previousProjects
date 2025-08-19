@@ -1,54 +1,8 @@
 # Machine Project 2: Webscraping & Data Analysis, Git Analysis, and Benchmarking
 
-## Corrections and Clarifications
-
-* None yet
-
 ## Overview
 
 This machine project will help studens review some basic HTML concepts from CS 220, check their understanding of the structure of Git repositories, and perform simple benchmarking analysis to compare and measure the performance of code.
-
-### Learning Objectives
-
-During this machine project, students will:
-- Review some basic webscraping concepts and analyze the gathered data
-- Write code to analyze the history of a git project.
-- Measure performance of different functions by benchmarking.
-
-## Setup
-
-Before you begin, follow the "starting a machine project" instructions in the [git-workflows](../git-workflows/README.md/#starting-a-machine-project) document to make sure that you are on the right branch and have the right files.
-
-Since it is still early in the semester, we have provided the commands for you to run below:
-
-```
-git checkout main # Switch to the main branch
-git pull # Pull the remote changes to your local branch
-git checkout MP2 # Switch to the MP2 branch
-git merge main # Merge the changes from main into MP2
-```
-
-Once you run these commands, you should verify that you are on the `MP2` branch by running `git branch`. Additionally, when you are in your git directory for this class, you should be able to run `ls` to see that this machine project and all of its files are present.
-
-You are now ready to begin the machine project. Make sure that you add-commit-push your code as you go.
-
-## Submission
-
-**Required Files**
-* `mp2.ipynb`: A notebook that should contain all of your answers to the machine project questions below.
-
-To submit the machine project, make sure that you have followed the instructions for "submitting a machine project"
-in the [git-workflows](../git-workflows/README.md/#submitting-a-machine-project) document for the required file(s) above.
-
-When following the submission instructions from above, the final output should look similar to this in GitLab:
-
-<img src="./successful-submission.PNG">
-
-If you do not know how to get to this screen, review the link above. If you are having issues, please come to office hours.
-
-### Important Notes:
-1. This whole assignment is to be done **individually**. That means, you are only allowed to seek help from CS 320 course staff (peer mentors, TAs, and the instructor). You may not receive help from anyone else.
-2. Hardcoding of any kind or trying to "cheat" the autograder **will be penalized heavily and can also result in 0 marks for all the projects**. If you are confused about your code, please reach out to the teaching staff before submission.
 
 ## Part 1: HTML Review
 
@@ -58,12 +12,6 @@ This first part of the project will serve as a review of some basic HTML and web
 
 Your output must be a **string** representing the email listed under the "Contact Section" of `sample.html`. 
 
-**Hint:** Consider opening the HTML file and looking at it to get familiar with its structure. 
-
-**Hint:** Begin by opening `sample.html`, then use `beautifulsoup4` to parse the html content and find the email. Use `find` to locate the "Contact Section" and find the email.
-
-**Note:** You must **not** hardcode the solution
-
 ### Requirement: Rankings DataFrame
 
 For the next few questions, you'll be tasked with analyzing and extracting world university rankings from a pre-saved HTML file, `rankings.html`, adapted from the [CWUR rankings](https://cwur.org/2020-21.php). To ensure efficiency and avoid overloading the original webpage with multiple requests, we've provided a local copy for all students. The goal of this first part is to parse the provided HTML file to collect and analyze data. 
@@ -71,7 +19,6 @@ For the next few questions, you'll be tasked with analyzing and extracting world
 
 Use BeautifulSoup to parse `rankings.html`, find the table containing the ranking data, and then save it as a Pandas DataFrame. You do not have to perform any typecasting of the data yet. **This DataFrame will be used in Q2-Q4**
 
-**Hint:** Use `find` or `find_all` to identify the table and its header.
 
 ### Q2: What is the highest-ranked institution in **Germany**?
 
@@ -81,13 +28,9 @@ Your output must be a **string** representing the name of this institution.
 
 Your output must be a **list** containing the names of the **lowest 10** universities from USA with a better World Rank than the best German institution. By better ranked, we refer to institutions with a lower value under the `World Rank` column.
 
-**Hint:** Get a list of **all** the universities from USA with a better rank than the best ranked German university, and then return the last 10 items of the list.
-
 ### Q4: What are the top five highest-ranked institutions based on `Research Rank` in **India**?
 
 Your output must be a **list** of institutions **sorted in increasing order** of their `Research Rank`.
-
-**Hint:** For sorting a DataFrame based on the values of a particular column, you can use the `DataFrame.sort_values(by="column_name")` method (where `column_name` is the column on which you want to sort).
 
 ## Part 2: Project History Analysis
 
@@ -101,23 +44,15 @@ If you pass `cwd="????"` to `check_output` with your desired directory, you can 
 
 The `check_output` function in the `subprocess` module (https://docs.python.org/3.10/library/subprocess.html#subprocess.check_output) returns a byte sequence; consider converting it to a string ("utf-8" encoding) and splitting it by newline (`\n`) to get a list. Save this list as a variable. This will be useful for answering the following questions.
 
-**Note:** All code for this question must be written directly in the Jupyter Notebook, and there must not be any hardcoding of values.
-
 ### Q6: What are the commit numbers of the 10 earliest commits?
 
 Answer with a list. Commits with earlier timestamp should be later in the list. 
 If you created a list in the last question of all of the lines, all you will need to do is filter out the "commit" lines, and properly slice that list.
 (Hint: Since `git log` puts earlier commits later in the output, you don't need to reorder the commits.)
 
-**Note:** All code for this question must be written directly in the Jupyter Notebook, and there must not be any hardcoding of values.
-
 ### Q7: What did the `README` file contain after the 100th commit?
 
 Use `check_output` to run a `git checkout` command to switch to that commit, before reading `flask/README` the way you would read any regular text file in Python (using `open` and `.read`).
-
-**Note**: If you are not able to find a file called `flask/README` and instead see `flask/README.md` or `flask/README.rst`, then you are on the wrong commit.
-
-**Note:** All code for this question must be written directly in the Jupyter Notebook, and there must not be any hardcoding of values.
 
 ### Q8: How many pull requests were merged from each GitHub user?  Only output users who appear 10 or more times.
 
@@ -159,8 +94,6 @@ For simplicity, we'll count these just like the original pull requests.
 
 **Note**: If your values are off/incorrect, it is likely that you are on the wrong commit. Make sure that you are on the 100th commit (This should have been done in Q11). 
 
-**Note:** All code for this question must be written directly in the Jupyter Notebook, and there must not be any hardcoding of values.
-
 ### Q9: What is the output of `pip3 instal`?  (yes, the misspelling was intentional)
 
 This one will be difficult because the command will fail, triggering
@@ -189,10 +122,6 @@ except subprocess.???? as e:
 Note that `stderr=subprocess.STDOUT` tells `check_output` that error
 messages should be treated as regular output -- that lets us capture
 the output with `e.output`.
-
-**Hint:** Consider using `decode()` to convert binary outputs to string type.
-
-**Note:** All code for this question must be written directly in the Jupyter Notebook, and there must not be any hardcoding of values.
 
 ## Part 3: Benchmarking
 
