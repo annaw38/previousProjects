@@ -7,4 +7,19 @@ An introduction to fundamental structures of computer systems and C with a focus
 - Run the program to decode a mystery message specifically encoded with a backward shift of all characters based on login username. 
 
 ## P2a
-- A program used to check if a sudoku board is valid or not. 
+- A program used to check if a sudoku board is valid or not.
+
+## P3
+- A heap memory allocator without using malloc/calloc/alloc and bfree.
+
+## P4a
+- A program used to learn caches using 1D and 2D arrays.
+
+## P4b
+- A cache simulator that takes a valgrind memory trace as input, simulates the hit/miss/eviction behavior of a cache memory on the trace, and outputs the total number of hits, misses, and evictions.
+
+## P5
+- 4 safes with secret codes in the output file, requires usage of a GDB (debugger) to access the assembly code and find the hidden secret codes.
+
+## P6
+- 2 programs: my_c_signal_handler.c and send_signal.c, the latter used to send signals and the former to handle the signal and print the process ID and time every 5 seconds until killed by the interrupt signal, SIGINT. 
