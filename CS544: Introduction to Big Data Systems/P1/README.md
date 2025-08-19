@@ -1,4 +1,4 @@
-# P1 (4% of grade): Counting Loans with Dockerized Shell Script
+# P1: Counting Loans with Dockerized Shell Script
 
 ## Overview
 
@@ -8,19 +8,6 @@ writing some shell commands to download a zipped file and search
 (grep) through its contents.  You'll automate these steps with a shell
 script.  The shell script may depend on other programs (like `unzip`),
 so you'll deploy it as a Docker image with the necessary installs.
-
-Learning objectives:
-* deploy a virtual machine in the cloud
-* follow a complicated series of steps to install Docker
-* write a shell script to automate several bash commands
-* bundle a shell script up as a Docker image/container
-
-Before starting, please review the [general project directions](../projects.md).
-
-## Corrections/Clarifications
-
-* Jan 30: fix script name (count.sh to multi.sh) in part 4
-* Jan 30: update general project specifications to say "Clone with SSH" instead of "Clone with HTTPS"
 
 ## Prepare: Virtual Machine Connection
 
@@ -85,16 +72,3 @@ docker run p1
 ```
 
 It's OK if there is extra output besides the actual count.
-
-## Submission
-
-Read the directions [here](../projects.md) about how to create the
-repo.
-
-At a minimum, your submission repo should contain the following:
-`docker.txt`, `compose.txt`, `download.sh`, `multi.sh`, and
-`Dockerfile`.
-
-## Tester
-
-See the general testing directions [here](../projects.md).
