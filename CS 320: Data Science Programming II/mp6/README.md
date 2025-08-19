@@ -1,9 +1,5 @@
 # Machine Project 6: EDGAR Web Logs
 
-## Corrections/Clarifications
-
-* None yet
-
 ## Overview
 
 In the US, public companies need to regularly file
@@ -15,18 +11,7 @@ about 250 MB compressed as a .zip (or 2 GB uncompressed!).
 
 We'll develop tools to extract information from the filings stored in EDGAR (this will be done in a Python module, `edgar_utils.py`) and we'll use those tools to analyze user behavior in `mp6.ipynb`.
 
-### Learning Objectives
-
-During this machine project, students will:
-- Work with large datasets from a zipfile using the Python `zipfile` module.
-- Create a custom class for analyzing filing data using regular expressions
-and other tools.
-- Plot geographic data using the `geopandas` module.
-
 ## Setup
-
-Before you begin, follow the "starting a machine project" instructions in the [git-workflows](../git-workflows/README.md/#starting-a-machine-project) document to make sure that you are on the right branch and have the right files.
-
 For this machine project, we will need some additional modules. You can install them by running the
 following lines in your VM's command line:
 
@@ -36,29 +21,6 @@ sudo apt install -y graphviz
 sudo apt install -y python3-rtree
 pip3 install geopandas shapely descartes geopy netaddr==0.10.0 graphviz
 ```
-
-## Testing
-
-Be sure to run `python3 tester.py` regularly to estimate your grade. As in machine project 2, the tester will both check the results of the analysis in your notebook, and use `module_tester.py` to check your `edgar_utils.py` module.
-
-## Submission
-
-**Required Files**
-* `mp6.ipynb`: A notebook that contains the answers to the questions found below.
-* `edgar_utils.py`: A Python module (.py file) that will have a `Filing` class as well
-as various functions for parsing filing information.
-
-To submit the machine project, make sure that you have followed the instructions for "submitting a project"
-in the [git-workflows](../git-workflows/README.md/#submitting-a-machine-project) document for the required file(s) above.
-
-When following the submission instructions from above, the final output should look similar to this in GitLab:
-
-<img src="./successful-submission.PNG">
-
-If you do not know how to get to this screen, review the link above. If you are having issues, please come to office hours.
-
-### Important Notes:
-1. Hardcoding of any kind or trying to "cheat" the autograder **will be penalized heavily and can also result in 0 marks for all the projects**. If you are confused about your code, please reach out to the teaching staff before submission.
 
 ## Data format
 
@@ -111,13 +73,7 @@ We have already downloaded the docs for a subset of the requests in
 
 Note that by default reading inside a zip gives you bytes.  For your regex work, convert to a string using UTF-8 (like we have done for `check_output`).
 
-# Group Part (77%)
-
-For this portion of the machine project, you may collaborate with your group members in any way (including looking at group members' code). You may also seek help from CS 320 course staff (peer mentors, TAs, and the instructor). You **may not** seek or receive help from other CS 320 students (outside of your group) or anybody else outside of the course.
-
 ## Part 1: `server_log.zip` analysis
-
-Answer these questions in `mp6.ipynb`.
 
 ### Q1: What's the total size in bytes of the files requested?
 
@@ -130,8 +86,6 @@ the true value will be even larger). Answer with an integer.
 
 Answer with a dictionary, with the (anonymized) IP as key and the number of requests seen in the logs as the values. Each row in the logs corresponds to one request. Note that the anonymized IP addresses are consistent between requests.
 
-**Hint:** for this question and most of the others expecting dictionary output, it might be easiest to use Pandas operations to process the data into a `Series` and to use the `to_dict()` method. Consider using tools like `groupby`, `apply`, and aggregation methods like `size()`. In Q30-32 from [MP1](../mp1/README.md), there is an example of `apply`.
-
 ### Q3: What fraction of the requests had errors?
 
 Any request with a status code greater than or equal to 400 has an error. Answer with a floating point number.
@@ -143,9 +97,6 @@ Answer with a string formatted like so: "cik/accession/extention" (these are the
 ## Part 2: Creating `edgar_utils.py` module
 
 This part is to be started during [Lab 9](../labs/Lab9/README.md). 
-
-Finish the `edgar_utils.py` module now if you didn't have enough time
-during the scheduled lab.
 
 ## Part 3: Using `edgar_utils.py` module
 
@@ -186,7 +137,6 @@ This means that 1/2 of the IPs in the US are high volume, so there should be an 
 **Note:** Some of the filings are listed as having a region of '-'. Please include this in your final
 answer.
 
-<!-- TODO: Update question/answer -->
 ### Q7: What dates appear in the `886982/0000769993-16-001958/-index.htm` file of `docs.zip`?
 
 Read the HTML from this file and use it to create a `Filing` object,
@@ -222,9 +172,6 @@ Answer with a dict, like the following:
 The showing order of each key-value pair doesn't really matter. Please include `None` in the
 dictionary.
 
-**Hint:** We created the `filings` dictionary above, which means we don't have to
-iterate through `docs.zip` here again!
-
 ### Q9: What is the distribution for the ten most common addresses for the filings in `docs.zip`?
 
 Answer in the same format as the previous question.
@@ -242,10 +189,6 @@ Expected output:
  '3 LANDMARK SQUARE\nSUITE 500\nSTAMFORD CT 06901': 24,
  '801 CHERRY STREET\nSUITE 2100\nFORT WORTH TX 76102': 22}
 ```
-
-# Individual Part (23%)
-
-For this portion of the machine project, you are only allowed to seek help from CS 320 course staff (peer mentors, TAs, and the instructor). You **may not** receive help from anyone else.
 
 ## Part 4: Combining logs with documents
 
