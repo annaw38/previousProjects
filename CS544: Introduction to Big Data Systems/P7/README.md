@@ -1,4 +1,4 @@
-# P7 (4% of grade): Kafka, Weather Data
+# P7: Kafka, Weather Data
 
 ## Overview
 
@@ -7,21 +7,6 @@ In this project, you will simulate a scenario where daily weather data is receiv
 ![alt text](diagram.png)
 
 For simplicity, we use a single Kafka broker instead of a cluster. A single producer will generate weather data in an infinite loop at an accelerated rate of 1 day per 0.1 seconds (you can change this during debugging). Finally, consumers will be different processes, launching from the same Python program.
-
-Learning objectives:
-* write code for setting up Kafka producers and consumers
-* apply streaming techniques to achieve "exactly once" semantics
-* use manual and automatic assignment of Kafka topics and partitions
-
-Before starting, please review the [general project directions](../projects.md).
-
-## Clarifications/Corrections
-
-* April 15: requirements.txt moved to src/requirements.txt to avoid issues with autobadger
-* April 17: added note about why you need to call `commit` even when your MySQL transactions only involve reading rows (not changing them)
-* April 17: released `autobadger` for p7 (version **0.1.19**)
-* April 21: updated  `autobadger` for p7 (version **0.1.20**)
-* April 21: added a clarification about the directory to write the checkpoints.
 
 ## Containers setup
 
@@ -75,8 +60,6 @@ docker exec -d -w /src p7-kafka python3 weather_generator.py
 ```
 
 To verify records are being stored in the DB, connect to the SQL container and directly query the table (review P4 if needed):
-
-**Hint**: To connect to the DB (name: `CS544`, password: `abc`) in the terminal you can use: `mysql -u root -pabc CS544`
 
    ```mysql
     mysql> select * from temperatures limit 10;
@@ -247,14 +230,6 @@ The Parquet files should have 3 columns corresponding to the columns of your pro
 
 We have already pre-installed pyarrow and pandas for you; feel free to use them to arrange the message data in tabular format for writing to Parquet/HDFS.
 
-**Hint**: To view the contents of a directory in HDFS you can use: `docker exec -it p7-kafka hdfs dfs -ls hdfs://boss:9000/data/`
-
-```bash
-hdfs://boss:9000/data/partition-0-batch-0.parquet
-hdfs://boss:9000/data/partition-0-batch-1.parquet
-hdfs://boss:9000/data/partition-0-batch-2.parquet
-```
-
 **Note:** at the rate we're generating data, each Parquet file will usually only have a couple rows, which is not a good use of Parquet/HDFS.  In practice, you would want to accumulate more data to write at once.  But for the sake of simplicity in this project, each Parquet file will correspond to a single Kafka batch.
 
 ## Part 4: Consumer Crash Recovery
@@ -320,72 +295,3 @@ You are not required to write a program to read the Parquet files for this proje
 If the reader reads the "100" file, it will fail, because that file is corrupt (partially written).  Instead, the reader should read the checkpoint file first, in which the last `batch_id` will be 99.  The reader should just read Parquet files 0-99 (inclusive) for partition 0, ignoring anything beyond that.
 
 In class, we emphasived the importance of atomically writing data and consumer offsets together.  Although the checkpoint JSON files and Parquet files are separate, we still have the necessary atomicity because we write both a reference to the data (batch_id) and consumer offset to a single file atomically.
-
-
-## Submission
-
-All your code should be in a directory named
-`src` within your repository.
-
-We should be able to run the following on your submission to build and
-run the required image:
-
-```
-# To build the images
-docker build . -f Dockerfile.hdfs     -t p7-hdfs
-docker build . -f Dockerfile.kafka    -t p7-kafka
-docker build . -f Dockerfile.namenode -t p7-nn
-docker build . -f Dockerfile.datanode -t p7-dn
-docker build . -f Dockerfile.mysql    -t p7-mysql
-
-# To start all services, including the kafka broker
-export PROJECT=p7
-docker compose up -d
-
-# To build proto file
-python3 -m grpc_tools.protoc -I=src/ --python_out=src/ report.proto
-
-# To run the weather generator program
-docker exec -d -w /src p7-kafka python3 weather_generator.py
-
-# To run the producer program
-docker exec -d -w /src p7-kafka python3 producer.py
-
-# To run the debug program
-docker exec -it -w /src p7-kafka python3 debug.py
-
-# To run the consumer program (for partition 0)
-docker exec -it -w /src p7-kafka python3 consumer.py 0
-
-# To run the consumer program (for partition 2)
-docker exec -it -w /src p7-kafka python3 consumer.py 2
-```
-
-Verify that your submission repo has a structure with at least the
-following files committed:
-
-```
-<your p7 repository>
-└── src
-    ├── producer.py
-    ├── debug.py
-    ├── consumer.py
-    ├── report.proto
-```
-
-## Testing
-
-Please be sure that your installed autobadger is on version **0.1.20**. You can print the version using:
-
-```bash
-autobadger --info
-```
-
-Run p7 autobadger using:
-
-```bash
-autobadger --project=p7 --verbose
-```
-
-See [projects.md](https://git.doit.wisc.edu/cdis/cs/courses/cs544/s25/main/-/blob/main/projects.md#testing) for more information.
--->
