@@ -1,33 +1,8 @@
-# P4 (4% of grade): SQL and HDFS
+# P4: SQL and HDFS
 
 ## Overview
 
 In this project, you will depoly a data system consisting of an SQL server, an HDFS cluster, a gRPC server, and a client. You will need to read and filter data from a SQL database and persist it to HDFS. Additionally, you will write a fault-tolerant application that works even when an HDFS DataNode fails (we will test this scenario).
-
-Learning objectives:
-* communicate with the SQL Server using SQL queries
-* use the WebHDFS API
-* utilize PyArrow to interact with HDFS and process Parquet files
-* handle data loss scenario
-
-Before starting, please review the [general project directions](../projects.md).
-
-## Corrections/Clarifications
-
-- Mar 5: A hint about HDFS environment variables added; a dataflow diagram added; some minor typos fixed.
-
-- Mar 5: Fix the wrong expected file size in Part 1 and sum of blocks in Part 2.
-
-- Mar 6: Released `autobadger` for `p4` (`0.1.6`)
-
-- Mar 7: 
-  - Some minor updates on p4 `Readme.md`.
-  - Update `autobadgere` to version `0.1.7`
-    - Fixed exception handling, now Autobadger can correctly print error messages. 
-    - Expanded the expected file size range in test4 `test_Hdfs_size`. 
-    - Make the error messages clearer.
-  
-
 
 ## Introduction
 
@@ -116,14 +91,6 @@ To check whether the upload was correct, you can use `docker exec -it <container
 Note: Your file size might have slight difference from this. 
 >That's because when we join two tables, rows from one table get matches with rows in the other, but the order of output rows is not guaranteed. If we have the same rows in a different order, the compressibility of snappy (used by Parquet by default) will vary because it is based on compression windows, and there may be more or less redundancy in a window depending on row ordering. 
 
-**Hint 1:** We used similar tables in lecture: https://git.doit.wisc.edu/cdis/cs/courses/cs544/s25/main/-/tree/main/lec/15-sql
-
-**Hint 2:**  To get more familiar with these tables, you can use SQL queries to print the table schema or retrieve sample data. A convenient way to do this is to use `docker exec -it <container name> bash` to enter the SQL Server, then run mysql client `mysql -p CS544` to access the SQL Server and then perform queries.
-
-**Hint 3:** After `docker compose up`, the SQL Server needs some time to load the data before it is ready. Therefore, you need to wait for a while, or preferably, add a retry mechanism for the SQL connection.
-
-**Hint 4:** For PyArrow to be able to connect to HDFS, you'll need to configure some env variables carefully.  Look at how Dockerfile.namenode does this for the start CMD, and do the same in your own Dockerfile for your server.
-
 ## Part 2: `BlockLocations` gRPC Call
 
 In this part, your task is to implement the `BlockLocations` gRPC call (you can find the interface definition in the proto file).
@@ -188,42 +155,3 @@ Recall that `CalcAvgLoan` sometimes uses small, county-specific Parquet files th
 CalcAvgLoan should now use the "source" field in the return value to indicate how the average was computed: "create" (from the big file, because a county-specific file didn't already exist), "recreate" (from the big file, because a county-specific file was corrupted/lost), or "reuse" (there was a valid county-specific file that was used).
 
 **Hint:** to manually test DataNode failure, you should use `docker kill` to terminate a node and then wait until you confirm that the number of `live DataNodes` has decreased using the `hdfs dfsadmin -fs <hdfs_path> -report` command. 
-
-## Submission
-
-Read the directions [here](../projects.md) about how to create the
-repo.
-
-You have some flexibility about how you write your code, but we must be able to run it like this:
-
-```
-docker build . -f Dockerfile.hdfs -t p4-hdfs
-docker build . -f Dockerfile.namenode -t p4-nn
-docker build . -f Dockerfile.datanode -t p4-dn
-docker build . -f Dockerfile.mysql -t p4-mysql
-docker build . -f Dockerfile.server -t p4-server
-docker compose up -d
-```
-
-Then run the client like this:
-
-```
-docker exec p4-server-1 python3 /client.py DbToHdfs
-docker exec p4-server-1 python3 /client.py BlockLocations -f /hdma-wi-2021.parquet
-docker exec p4-server-1 python3 /client.py CalcAvgLoan -c 55001
-```
-
-Note that we will copy in the the provided files (docker-compose.yml, client.py, lender.proto, hdma-wi-2021.sql.gz, etc.), overwriting anything you might have changed.  Please do NOT push hdma-wi-2021.sql.gz to your repo because it is large, and we want to keep the repos small.
-
-Please make sure you have `client.py` copied into the p4-server image. We will run client.py in the p4-server-1 container to test your code. 
-
-## Tester
-
-Please be sure that your installed `autobadger` is on version `0.1.7`. You can print the version using
-
-```bash
-autobadger --info
-```
-
-See [projects.md](https://git.doit.wisc.edu/cdis/cs/courses/cs544/s25/main/-/blob/main/projects.md#testing) for more information.
-
