@@ -39,7 +39,7 @@
 - Use manual and automatic assignment of Kafka topics and partitions.
 
 ## P8: Google Cloud Services
-- Create a Virtual Machine on a public cloud and connect to it via SSH.
+- Create a **Virtual Machine** on a public cloud and connect to it via SSH.
 - Create a **GCS bucket** and upload data to it.
 - Write a **DataForm** pipeline to bring data from GCS to BigQuery storage.
 - Write **BigQuery** queries to manipulate geographic data.
