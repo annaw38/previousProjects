@@ -1,4 +1,4 @@
-# P2 (4% of grade): gRPC and Containers
+# P2: gRPC and Containers
 
 ## Overview
 
