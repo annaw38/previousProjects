@@ -1,4 +1,4 @@
-# P8 (4% of grade): Google Cloud Services
+# P8: Google Cloud Services
 
 ## Overview
 
@@ -9,108 +9,6 @@ data to a GCS bucket.  You'll use Dataform to create a pipeline that
 brings this data (in combination with public geographic data) into a
 BigQuery dataset.  Finally, you'll use BigQuery to answer questions
 about data.
-
-Learning objectives:
-
-- create a **VM** on a public cloud and connect to it via SSH
-- create a **GCS bucket** and upload data to it
-- write a **DataForm** pipeline to bring data from GCS to BigQuery storage
-- write **BigQuery** queries to manipulate geographic data
-
-Before starting, please review the [general project directions](../projects.md).
-
-## Clarifications/Correction
-
-- April 28: added  autobadger info for p8 (version 0.1.21)
-- April 30: updated autobadger (version 0.1.22), minor fix, now accepts both single and double quotes (e.g., `${ref('wi_counties')}` and `${ref("wi_counties")}`) in wi_county_schools.sqlx
-
-## Part 1: Virtual Machine Setup
-
-### Educational Credits
-
-We'll use Google's Cloud (GCP) for our virtual machines. They've
-generously given each 544 student $50 in credits.  You can obtain the
-credits here:
-<https://canvas.wisc.edu/courses/450562/discussion_topics/2122215>
-
-### Launch VM
-
-You likely have some experience in creating VMs in a prior course (320
-or 400), so these directions will be brief, and you can decide things
-like what geographic region to create it in (I picked Iowa since it's
-nearby), but here are some highlights:
-
-- you can launch and see VMs from here: <https://console.cloud.google.com/compute/instances>
-- Be sure to choose e2-medium for machine type.
-- Update your boot disk settings to use the Ubuntu 24.04 LTS public image -- select the x86/64 version (**not Arm64**) — with a boot disk size of 25 GB. Once you select these settings, the monthly estimate should be about $25/month for the VM (if it’s not, you probably selected something wrong, and might run out of free credits before the end of the project).
-- you may have modified firewall settings for other courses, but that's not necessary for 544
-- you'll need to setup an SSH key so you can connect from your laptop: <https://console.cloud.google.com/compute/metadata?tab=sshkeys> (the browser-based SSH client won't work for what we need to do in this class)
-
-There's a bit more explanation about SSH keys [here](ssh-keys.md).
-
-(Optional) If you're worried about exhausting the free tier and your educational
-credits, you might also want to setup a quota [here](https://console.cloud.google.com/iam-admin/quotas).
-
-### GitLab
-
-SSH authentication to GitLab is only enabled from machines on the same network (like your CSL VM).  That means you cannot use SSH keys to clone/pull/push your repo while working on your Google VM.  Instead, set a strong password here:
-
-https://git.doit.wisc.edu/-/user_settings/password/edit
-
-Then, when you clone your repo to your VM, use the HTTPS address instead of the SSH address.
-
-Of course, if you're running into trouble, a short-term solution is to have your repo on a different machine (your laptop, or CSL VM) and `scp` files around as necessary.
-
-### Jupyter Setup
-
-Setup a Python `venv` for this project and install some packages:
-
-```shell
-sudo apt install python3-venv
-python3 -m venv venv
-source venv/bin/activate
-pip3 install jupyterlab google-cloud-bigquery google-cloud-bigquery-storage bigquery-magics pyarrow tqdm ipywidgets pandas matplotlib db-dtypes pandas-gbq google-cloud-dataform google-cloud-storage
-```
-
-With your `venv` still active, run:
-
-```bash
-python3 -m jupyterlab --no-browser
-```
-
-1. Setup an SSH tunnel and connect (as done in previous projects)
-2. You'll be prompted to copy/paste a token from the terminal to the browser.
-3. Finally, create a notebook named `p8.ipynb` inside of `src/` in your project repo.
-
-Create a `p8.ipynb` notebook inside of `src/`. You'll answer 10 questions in the notebook.
-
-### Authentication
-
-You'll also need to give your VM permission to access BigQuery. You can do so by pasting the following into the
-terminal on your VM and following the directions. Please read the following cautions before running this command.
-
-```
-gcloud auth application-default login --scopes=openid,https://www.googleapis.com/auth/cloud-platform
-```
-
-#### Caution
-
-1. While running the command, it will ask you to paste some link to your browser. If you have multiple Google accounts in your browser, and do not want this to select the default one, then do the following:
-   - paste the link in an incognito mode
-   - login to the Google account of your choice
-2. **Be careful**, because if a malicious party were to gain access to your
-   VM, they would have free access to all your cloud services. For example, if your Jupyter is listening publicly (i.e.,
-   0.0.0.0 instead of localhost) and you have a weak password (or no
-   password), someone could gain access to your VM, and then these other
-   resources.
-3. You may need to run this command again if you run into an error like `"Reauthentication is needed"`.
-
-When you're not actively working, you may want to revoke (take away)
-the permissions your VM has to minimize risk:
-
-```bash
-gcloud auth application-default revoke
-```
 
 ### Questions
 
@@ -338,41 +236,3 @@ Middle': 3.9513342414992176, 'Waunakee Middle': 0.23741587309479018,
 'Whitehorse Middle': 2.252781418278708, 'Wisconsin Heights Middle':
 0.0}
 ```
-
-## Submission
-
-When you are all done, commit and push to GitLab.
-
-Verify that your submission repository has the following structure with at least these files committed:
-
-```
-<your p8 repository>
-└── src
-    ├── definitions
-    │   ├── wi_counties.sqlx
-    │   ├── schools.sqlx
-    │   └── wi_county_schools.sqlx
-    └── p8.ipynb
-```
-
-Do not forget to revoke the permission to access your cloud account:
-
-```
-gcloud auth application-default revoke
-```
-
-## Testing
-
-Please be sure that your installed autobadger is on version **0.1.21**. You can print the version using:
-
-```bash
-autobadger --info
-```
-
-Run p8 autobadger using:
-
-```bash
-autobadger --project=p8 --verbose
-```
-
-See [projects.md](https://git.doit.wisc.edu/cdis/cs/courses/cs544/s25/main/-/blob/main/projects.md#testing) for more information.
