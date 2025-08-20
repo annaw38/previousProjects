@@ -1,55 +1,8 @@
-# P5 (4% of grade): Spark And Hive
+# P5: Spark And Hive
 
 ## Overview
 
 In P5, you'll use Spark to analyze competitive programming problems and their solutions. You'll load your data into Hive tables and views for easy querying. The main table contains numerous IDs in columns; you'll need to join these with other tables or views to determine what these IDs mean.
-
-**Important:** You'll answer 10 questions in P5. Write each question number and text (e.g., "#q1: ...") as a comment in your notebook before each answer so we can easily find and grade your work.
-
-Learning objectives:
-
-- Use Spark's RDD, DataFrame, and SQL interfaces to answer questions about data
-- Load data into Hive for querying with Spark
-- grouping and optimizing queries
-- Use PySpark's machine learning API to train a decision tree
-
-Before starting, please review the [general project directions](../projects.md).
-
-## Corrections/Clarifications
-
-- 3/15/2025: Fixed p5-base dockerfile and added in note to not include the datasets in your submission.
-- 3/17/2025: Added hint for boss and worker
-- 3/18/2025: Updated autobadger to fix questions 8-10. Should be on version **0.1.11**.
-- 3/19/2025: Updated autobadger multiple times for test fixes. Should be on version **0.1.14**.
-
-## Setup
-
-Copy these files from the project into your repository:
-
-- `p5-base.Dockerfile`
-- `namenode.Dockerfile`
-- `notebook.Dockerfile`
-- `datanode.Dockerfile`
-- `docker-compose.yml`
-- `build.sh`
-- `get_data.py`
-- `.gitignore`
-
-Create a Python virtual environment and install the [datasets library](https://huggingface.co/docs/datasets/en/index):
-
-```sh
-pip3 install datasets==3.3.2
-```
-
-Create the directory structure with:
-
-```sh
-mkdir -p nb/data
-```
-
-Run the provided `get_data.py` script to download the [DeepMind CodeContests dataset](https://huggingface.co/datasets/deepmind/code_contests) and split it into `problems.jsonl` and `solutions.jsonl`.
-
-**NOTE:** Do NOT include the generated data in your submission. The `.gitignore` will do this for you.
 
 ### Docker Containers
 
@@ -71,8 +24,6 @@ export PROJECT=p5
 docker compose up -d
 ```
 
-**Hint:** For the boss and worker dockerfile, look at the lecture code for spark.
-
 ### Jupyter Container
 
 Connect to JupyterLab inside your container. Within the `nb` directory, create a notebook called `p5.ipynb`.
@@ -83,10 +34,6 @@ Run the following shell commands in a cell to upload the data:
 hdfs dfs -D dfs.replication=1 -cp -f data/*.jsonl hdfs://nn:9000/
 hdfs dfs -D dfs.replication=1 -cp -f data/*.csv hdfs://nn:9000/
 ```
-
-### VS Code users
-
-If you are using VS Code and remote SSH to work on your project, then the ports will already be forwarded for you. And you only need to go to: `http://127.0.0.1:5000/lab` in your terminal.
 
 ## Part 1: Filtering: RDDs, DataFrames, and Spark
 
@@ -114,8 +61,6 @@ If loaded properly, you should see:
 #### Q1: How many problems are there with a `cf_rating` of at least 1600, having `private_tests`, and a name containing "\_A." (Case Sensitive)? Answer by directly using the RDD API.
 
 Remember that if you have a Spark DataFrame `df`, you can get the underlying RDD using `df.rdd`.
-
-**REMEMBER TO INCLUDE `#q1` AT THE TOP OF THIS CELL**
 
 #### Q2: How many problems are there with a `cf_rating` of at least 1600, having `private_tests`, and a name containing "\_A." (Case Sensitive)? Answer by using the DataFrame API.
 
@@ -176,8 +121,6 @@ The boolean indicates whether it is a temporary view (True) or table (False).
 
 You may use any method for this question. Join the `solutions` table with the `problems` table using an inner join on the `problem_id` column. Note that the `source` column in `problems` is an integer. Join this column with the `source_id` column from the `sources` CSV. Find the number of correct `PYTHON3` solutions from `CODEFORCES`.
 
-Answer Q6 with code and a single integer. **DO NOT HARDCODE THE CODEFORCES ID**.
-
 #### Q7: How many problems are of easy/medium/hard difficulty?
 
 The `problems_df` has a numeric `difficulty` column. For the purpose of categorizing the problems, interpret this number as follows:
@@ -193,8 +136,6 @@ Your answer should return this dictionary:
 ```
 
 Note (in case you use this dataset for something beyond the course): the actual meaning of the difficulty column depends on the problem source.
-
-**Hint:** https://www.w3schools.com/sql/sql_case.asp
 
 #### Q8: Does caching make it faster to compute averages over a subset of a bigger dataset?
 
@@ -243,26 +184,3 @@ Answer with a tuple with 3 numbers:
 For example:
 
 (1887.9377431906614, 1893.1106471816283, 1950.4728638818783)
-
-## Submission
-
-We should be able to run the following on your submission to directly create the mini cluster:
-
-```
-docker build . -f p5-base.Dockerfile -t p5-base
-docker build . -f notebook.Dockerfile -t p5-nb
-docker build . -f namenode.Dockerfile -t p5-nn
-docker build . -f datanode.Dockerfile -t p5-dn
-docker build . -f boss.Dockerfile -t p5-boss
-docker build . -f worker.Dockerfile -t p5-worker
-
-export PROJECT=p5
-docker compose up -d
-```
-
-We should then be able to open `http://localhost:5000/lab`, find your
-notebook, and run it.
-
-## Tester
-
-Coming soon...
