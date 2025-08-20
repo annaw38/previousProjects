@@ -11,20 +11,6 @@ The server will write two files for each uploaded CSV file: one in CSV
 format and another in Parquet. Clients that we provide will
 communicate with your server via RPC calls.
 
-Learning objectives:
-* Implement logic for uploading and processing CSV and Parquet files
-* Perform computations like summing values from specific columns
-* Manage concurrency with locking in a multi-threaded server
-n
-Before starting, please review the [general project directions](../projects.md).
-
-## Clarifications/Corrections
-
-* Feb 24: feel free to use different tools to implement Part 2.
-* Feb 24: clarify that `bigdata.py` will be used in tests.
-* Feb 24: add link to lecture notes on parquet file operations.
-* Feb 24: remove port forwarding for `docker run` since we test server with `docker exec`
-
 ## Part 1: Communication (gRPC)
 
 In this project, three client programs (upload.py, csvsum.py, and
@@ -222,43 +208,3 @@ when accessing them to gain practice protecting shared data.
 
 **Requirement:** reading and writing files is a slow operation, so
 your code must NOT hold the lock when doing file I/O.
-
-## Testing and Grading
-
-We will be releasing an autograder soon.
-
-However, it is often difficult to catch concurrency bugs via just
-tests, so manual grading will be a bigger part of your score for this
-project than it is for most.  Here's a checklist of the most important
-things we'll be looking for:
-
-- are there 8 threads?
-- is the lock held when shared data structures accessed?
-- is the lock released when files are read or written?
-- does the summation RPC use either parquets or CSVs based on the passed argument?
-- when a parquet is read, is the needed column the only one that is read?
-
-## Submission
-
-You have some flexibility in how your organize your project
-files. However, we need to be able to easily run your code.  In order
-to be graded, please ensure to push anything necessary so that we'll
-be able to run your client and server as follows:
-
-```sh
-# build image
-docker build . -t p3
-
-# run server in new container
-docker run --name=yournetid -d -m 512m -v ./inputs:/inputs p3
-
-# run clients in same container
-docker exec yournetid python3 upload.py /inputs/simple.csv
-docker exec yournetid python3 csvsum.py x
-docker exec yournetid python3 parquetsum.py x
-docker exec yournetid python3 bigdata.py
-```
-
-Please do include the files built from the .proto (your Dockerfile
-should build it).  Do not include your venv directory (if you created
-one).
