@@ -1,4 +1,4 @@
-# P6 (4% of grade): Cassandra, Weather Data
+# P6: Cassandra, Weather Data
 
 ## Overview
 
@@ -11,62 +11,6 @@ will also let clients ask simple questions about the data.
 We'll also explore read/write availability tradeoffs.  We always want
 sensors to be able to upload data, but it is OK if we cannot always
 read the latest stats (we prefer an error over inconsistent results).
-
-Learning objectives:
-
-* create Cassandra schemas involving partition keys and cluster keys
-* use Spark to preprocess data for insertion into Cassandra
-* configure queries to achieve a tradeoff between read and write availability
-* use prepared statements
-
-Before starting, please review the [general project directions](../projects.md).
-
-## Corrections/Clarifications
-
-* Apr 3:  updated cassandra.sh to reduce memory consumption of Cassandra workers and stay under Docker memory limits
-* Apr 10: updated autobadger to version `0.1.17`. Added more error messaging for some questions.
-
-## Project Setup
-
-**IMPORTANT:** You may not modify the `Dockerfile, docker-compose.yml, cassandra.sh, src/Client*.py, and src/station.proto`. The autobadger may give 0 points if you modify those files.
-
-Note that the compose file assumes there is a "PROJECT" environment variable.  You can set it to p6 in your environment:
-* `export PROJECT=p6`
-
-We provide the Dockerfile and docker-compose.yml for this project. In
-the Dockerfile, we install several necessary Python packages.
-You can also add more packages you need in src/requirements.txt. You can
-run the following:
-
-* `docker build . -t p6`
-* `docker compose up -d`
-
-It will start three containers ('p6-db-1', 'p6-db-2', 'p6-db-3'). It generally takes around 1 to 2 minutes for the Cassandra cluster to be ready.  **Note that** you may not modify the Dockerfile.
-
-
-Run the following command:
-
-```
-docker exec p6-db-1 nodetool status
-```
-
-If the cluster is ready, it will produce an output like this:
-
-```sh
-Datacenter: datacenter1
-=======================
-Status=Up/Down
-|/ State=Normal/Leaving/Joining/Moving
---  Address     Load       Tokens  Owns (effective)  Host ID                               Rack 
-UN  172.27.0.4  70.28 KiB  16      64.1%             90d9e6d3-6632-4721-a78b-75d65c673db1  rack1
-UN  172.27.0.3  70.26 KiB  16      65.9%             635d1361-5675-4399-89fa-f5624df4a960  rack1
-UN  172.27.0.2  70.28 KiB  16      70.0%             8936a80e-c6b2-42ef-b54d-4160ff08857d  rack1
-```
-
-If the cluster is not ready it will show an error (usually a Java
-IllegalArgumentException exception). If this occurs then wait a little
-bit and rerun the command and keep doing so until you see that the
-cluster is ready.
 
 ## Part 1: Server Initialization
 
@@ -289,46 +233,3 @@ Call ClientStationMax.py again. Reads should raises a cassandra.Unavailable exce
 ```
 unavailable
 ```
-
-## Submission
-
-Read the directions [here](../projects.md) about how to create the
-repo.  Note that we will copy in the the provided files (every file
-except `server.py` and `src/requirements.txt`), overwriting anything
-you might have changed.
-
-Make sure you upload every file you need to run the following commands:
-
-
-```
-docker build . -t p6
-docker compose up -d
-
-docker exec -w /src p6-db-1 sh -c "python3 -m grpc_tools.protoc -I=. --python_out=. --grpc_python_out=. station.proto "
-
-# in a terminal:
-docker exec -it -w /src p6-db-1 python3 server.py
-
-# in a second terminal:
-docker exec -w /src p6-db-1 python3 ClientStationSchema.py
-```
-
-## Testing:
-
-Details coming soon...
-
-<!--
-
-Please be sure that your installed autobadger is on version **TODO**. You can print the version using
-```
-autobadger --info
-```
-
-See [projects.md](https://git.doit.wisc.edu/cdis/cs/courses/cs544/s25/main/-/blob/main/projects.md#testing) for more information.
-
-
-This constitutes 90% of the total score. 
-The remaining 10% will be graded manually. 
-We will be checking your read and write consistency levels.
-
--->
