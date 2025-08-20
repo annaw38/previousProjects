@@ -1,4 +1,4 @@
-# P3 (4% of grade): Large, Thread-Safe Tables
+# P3: Large, Thread-Safe Tables
 
 ## Overview
 
