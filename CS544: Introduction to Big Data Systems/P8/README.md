@@ -206,33 +206,3 @@ Middle': 'Monona Grove High', 'Wisconsin Heights Middle': 'Wisconsin
 Heights High'}
 ```
 
-Given you need to give the High School with the minimum distance, you
-may want to use the `MIN_BY` aggregate
-(https://cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions#min_by)
-instead of `MIN`.
-
-You are not required to report the actual distances to the nearest
-schools, but it may help to know for debugging (the below distances are in kilometers):
-
-```
-{'Badger Ridge Middle': 1.8392052150991804, 'Badger Rock Middle':
-5.29072039608733, 'Belleville Middle': 0.0, 'Black Hawk Middle':
-3.2208653727303473, 'Central Heights Middle': 0.0, 'Cherokee Heights
-Middle': 3.0891335611917463, 'De Forest Middle': 0.7104369448866054,
-'Deerfield Middle': 0.0, 'Ezekiel Gillespie Middle School':
-0.20996167824816614, 'Glacial Drumlin School': 8.422858770109299,
-'Glacier Creek Middle': 10.380886949942708, 'Hamilton Middle':
-1.6888876951751441, 'Indian Mound Middle': 0.3181930065207676,
-'Innovative and Alternative Middle': 0.0, 'James Wright Middle':
-3.099031509318725, 'Kromrey Middle': 0.633645628693037, 'Marshall
-Middle': 0.3692934702053087, 'Mount Horeb Middle': 0.2247088214705937,
-'Nikolay Middle': 2.7825509153862193, "O'Keeffe Middle":
-1.1801078611747235, 'Oregon Middle': 2.199089113737385, 'Patrick Marsh
-Middle': 2.995356862757154, 'Prairie View Middle': 1.4469952774362715,
-'River Bluff Middle': 1.491373618930982, 'Savanna Oaks Middle':
-7.439620069162148, 'Sennett Middle': 0.1614363991779063, 'Sherman
-Middle': 0.0, 'Spring Harbor Middle': 3.0043175181011414, 'Toki
-Middle': 3.9513342414992176, 'Waunakee Middle': 0.23741587309479018,
-'Whitehorse Middle': 2.252781418278708, 'Wisconsin Heights Middle':
-0.0}
-```
