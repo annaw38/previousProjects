@@ -10,3 +10,22 @@ This app enables users to find the shortest path (shortest walking time) between
 Dijkstra's shortest path algorithm to find the connections in a graph that contains buildings on (and close to) campus 
 as the notes, and walking paths between neighboring buildings as edges. The data is loaded from a local file that the user 
 specifies.
+
+## A02: JUnit
+- Practice compiling and running Java code.
+- Develop and use JUnit tests.
+
+## A03: First Git
+- Practice working with a local Git repository with a single branch.
+- Inspect the history of past versions within a single branch and make changes within the branch.
+
+## A04: Second Git
+- Practice working with a local Git repository with multiple branches.
+- Review, update, and merge commits across multiple branches and share the changes with a remote repository.  
+
+## A05: Make
+- Develop make files to build and run java programs and tests
+- Trace through the evaluation of th erules in the makefile
+
+
+
