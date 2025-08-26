@@ -2,6 +2,15 @@
 
 An introduction to fundamental structures of computer systems and C with a focus on the low-level interrelationships and impacts on performance. Includes projects related to compiling, the virtual address space and virtual memory, heap and dynamic memory allocation, caching, assembly language and the stack, and communication and signaling.
 
+## A02
+- Program that prints a sequence of numbers from 1 to 10 to learn the basics of C.
+
+## A03
+- Program that prints a sequence of numbers from smaller inputted number to larger number given by user.
+
+## A04
+- Program that prints sequence of a certain size given by the user using the formula x_1 = m*x_0 + c.
+
 ## P1
 - Learn the different steps in compiling before running it.
 - Run the program to decode a mystery message specifically encoded with a backward shift of all characters based on login username. 
