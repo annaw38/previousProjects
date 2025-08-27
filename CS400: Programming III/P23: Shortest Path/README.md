@@ -1,10 +1,3 @@
-# Review the Code Shared With You
-Review the Node and Edge inner classes within the provided BaseGraph.java code to understand how graphs are represented within this class that you will be extending for this assignment.
-
-The nodes are stored in an object of type MapADT, that maps a key (the data stored at the node) to a value (the node object storing the data). This map object can be passed into BaseGraph through its constructor. The assignment comes with an implementation called PlaceholderMap which uses a class from java.util to implement the mapping. In a future week, we will implement this map data structure ourselves and will then use this new data structure with BaseGraph instead of the PlaceholderMap.
-
-Review the insertNode, insertEdge, removeNode, and removeEdge methods of BaseGraph to confirm your understanding of how this data is being used, and to prepare yourself to use it in a similar manner through this assignment. 
-
 # Implement Tests
 Develop the following new JUnit5 tests within the bottom portion of your DijkstraGraph class definition:
 Create a test that makes use of an example that you traced through in lecture, and confirm that the results of your implementation match what you previously computed by hand.
