@@ -52,9 +52,25 @@ loaded from a local file that the user specifies.
 - The BinarySearchTree class implements a non self-balancing binary search tree with tree rotations. 
 
 ## P12: Movie Interface Design
-- Create a interface that can be used to create the red black tree. 
+- Design an interface, KeyListInterface, that can be used to store multiple movie objects in each node of the tree.
+- Design another interface, IterableMultiKeySortedCollectionInterface that allows iteration over the objects stored in the tree. 
+
+## P13: RBT Insert 
+- Edit Binary Search Tree class to create a new Red Black Tree class.
+- Add JUnit tests to ensure functionality of insertion into the Red Black Tree.
+
+## P15: RBT Iterator 
+- Create and implement a new class, IterableMultiKeyRBT, that allows iteration over the Red Black Tree
+- Add JUnit tests to ensure functionality of iterating over the Red Black Tree.
+
+## P22: UW Path Finder Interface Design 
+- Design an interface, PathResultInterface, that can be used to store different paths.
+
+## P23: Shortest Path
+- Create JUnit tests to ensure functionality of behavior of program on different graphs, a normal graph with costs associated on the edges and another graph with no path.
+- 
 ## UW Path Finder App 
-This app enables users to find the shortest path (shortest walking time) between two buildings on the UW campus. The app utilizes
+This app enables users to find the shortest path (shortest walking time) between two buildings on the UW-Madison campus. The app utilizes
 Dijkstra's shortest path algorithm to find the connections in a graph that contains buildings on (and close to) campus 
 as the notes, and walking paths between neighboring buildings as edges. The data is loaded from a local file that the user 
 specifies.
