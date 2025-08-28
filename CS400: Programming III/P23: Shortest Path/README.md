@@ -7,7 +7,8 @@ Create another test using the same graph as you did for the test above, but chec
 Create a test that checks the behavior of your implementation when the nodes that you are searching for a path between existing nodes in the graph, but there is no sequence of directed edges that connects them from the start to the end.
 
 # Implement Dijkstra's Algorithm
-Next, review the contents of the provided DijkstraGraph.java source file. This is where you will implement your solution for this assignment. Notice that this class extends BaseGraph and also implements the GraphADT interface. Your job for this assignment is to implement one protected helper method, and then to use that method to implement two public methods in this class. All of the code that you write for this assignment should go into one of these three methods. You can write additional private helper methods to better organize this code. But you are not allowed to add any extra fields or inner classes.
+Your job for this assignment is to implement one protected helper method, and then to use that method to implement two public methods in this class. All of the code that you write for this assignment should go into one of these three methods. You can write additional private helper methods to better organize this code. But you are not allowed to add any extra fields or inner classes.
+
 We have provided you with a SearchNode inner class definition that will be useful for keeping track of the nodes in your priority queue, along with associated information about the paths leading from the start node to them: for example the cost of that complete path and the predecessor SearchNode along that path. You should not modify this inner class for the purpose of this assignment.
 
 Start by implementing the computeShortestPath helper method using Dijkstra's Algorithm. Note the import statements at the top of this file. They should be used within your computeShortestPath. Your solution should:
