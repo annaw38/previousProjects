@@ -2,17 +2,30 @@
 
 Repository for all of my past projects in:
 
-Computer Sciences 300: Programming II 
+## Computer Sciences 300: Programming II 
+- Languages: Java
+- Applications used: Eclipse
 
-Computer Sciences 320: Data Science Programming II 
+## Computer Sciences 320: Data Science Programming II
+- Languages: Python
+- Applications used: Jupyter Notebook
+  
+## Computer Sciences 354: Machine Organization and Programming
+- Languages: C
+- Applications used: GDB, Virtual Machine
 
-Computer Sciences 354: Machine Organization and Programming
+## Computer Sciences 400: Programming III 
+- Languages: Java, HTML, CSS, JavaScript, JavaFX
+- Applications used: Git, JUnit, Eclipse, Virtual Machine
 
-Computer Sciences 400: Programming III 
+## Computer Sciences 540: Introduction to Artificial Intelligence
+- Languages: Python
+- Applications used: Visual Studio Code
 
-Computer Sciences 540: Introduction to Artificial Intelligence
-
-Computer Sciences 544: Introduction to Big Data Systems
-
-English 140: The Figure of the Outsider (Webpage)
-
+## Computer Sciences 544: Introduction to Big Data Systems
+- Languages: Python, SQL
+- Applications used: Docker, gRPC, Hadoop, Cassandra, PyArrow, Spark, Kafka, BigQuery, Google Cloud, Virtual Machine
+  
+## English 140: The Figure of the Outsider (Webpage)
+- Languages: HTML and CSS
+- Applications used: Visual Studio Code
