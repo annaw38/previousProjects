@@ -68,7 +68,11 @@ loaded from a local file that the user specifies.
 
 ## P23: Shortest Path
 - Create JUnit tests to ensure functionality of behavior of program on different graphs, a normal graph with costs associated on the edges and another graph with no path.
-- 
+- Implement Dijkstra's Shortest Path algorithm to find the shortest path in the graph.
+
+## P25: HashTable 
+- Implement a hash table to store the building and time it takes to go to the building using chaining and rehashing when the load factor is equal to or greater than 75%.
+
 ## UW Path Finder App 
 This app enables users to find the shortest path (shortest walking time) between two buildings on the UW-Madison campus. The app utilizes
 Dijkstra's shortest path algorithm to find the connections in a graph that contains buildings on (and close to) campus 
