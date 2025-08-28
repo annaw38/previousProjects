@@ -26,6 +26,6 @@ Repository for all of my past projects in:
 - Languages: Python, SQL
 - Applications used: Docker, gRPC, Hadoop, Cassandra, PyArrow, Spark, Kafka, BigQuery, Google Cloud, Virtual Machine
   
-## English 140: The Figure of the Outsider (Webpage)
+## English 140: The Figure of the Outsider
 - Languages: HTML and CSS
 - Applications used: Visual Studio Code
