@@ -1,7 +1,5 @@
 # P1: Counting Loans with Dockerized Shell Script
 
-## Prepare: Virtual Machine Connection
-
 ## Part 2: Multi Script
 
 Write a `multi.sh` script first uses `download.sh` to generate wi.txt, then
