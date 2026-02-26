@@ -25,7 +25,11 @@ Repository for all of my past projects in:
 ## Computer Sciences 544: Introduction to Big Data Systems
 - Languages: Python, SQL
 - Applications used: Docker, gRPC, Hadoop, Cassandra, PyArrow, Spark, Kafka, BigQuery, Google Cloud, Virtual Machine
-  
+
+## Computer Sciences 571: Building User Interfaces
+- Languages: HTML, CSS, JS, React, React Native. Bootstrap (design)
+- Applications used: Expo (Mobile development), Visual Studio Code
+
 ## English 140: The Figure of the Outsider
 - Languages: HTML and CSS
 - Applications used: Visual Studio Code
